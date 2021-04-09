@@ -1,7 +1,17 @@
 # -*- coding:utf-8 -*-
-import os, re
+#!/usr/bin/env python
+#encoding: utf-8
+#coding: utf-8
+#!/usr/bin/env python3
+#Autor Maurcio Rodrigues (mauriciosist@gmail.com)
+import os, re, fileinput
 import os.path
 import shutil
+import io
+
+from tempfile import mkstemp
+from shutil import move, copymode
+from os import fdopen, remove
 
 caminhoPAI = 'C:/Users/hitma/Desktop/JUVO_GR_PRD_FIAT'
 
@@ -15,7 +25,17 @@ def acess_dir(caminho):
     with os.scandir(caminho) as it:
         for entry in it:
             if not entry.name.startswith('.') and entry.is_dir():
-                print('\t', entry.name)
+                print(entry.name)
+
+def listar_arquivos(caminho):
+    arquivos = []
+    with os.scandir(caminho) as it:
+        for entrar in it:
+            if not entrar.name.startswith('.') and entrar.is_file():
+                #if entrar.name[-4:] == '.kjb' or entrar.name[-4:] == '.txt':
+                #print(caminho+'/'+entrar.name)
+                arquivos.append(caminho.replace("\\","/")+'/'+entrar.name)
+    return(arquivos)
 
 def listar_subDiretorios(caminho):
     subfolders = [f.path for f in os.scandir(caminho) if f.is_dir()]
@@ -24,16 +44,43 @@ def listar_subDiretorios(caminho):
         subfolders.sort()
     return subfolders
 
-def listar_arquivos(caminho):
-    arquivos = []
-    with os.scandir(caminho) as it:
-        for entrar in it:
-            if not entrar.name.startswith('.') and entrar.is_file():
-                #if entrar.name[-4:] == '.kjb' or entrar.name[-4:] == '.txt':
-                #print('\t', entrar.name)
-                arquivos.append(entrar.name)
-    return(arquivos)
+def word_replace(filename,old,new):
+    c=0
+    with io.open(filename,'r+', encoding='utf8') as f:
+        a=f.read()
+        b=a.split()
+        for i in range(0,len(b)):
+            if b[i]==old:
+                c=c+1
+        old=old.center(len(old)+2)
+        new=new.center(len(new)+2)
+        d=a.replace(old,new,c)
+        f.truncate(0)
+        f.seek(0)
+        f.write(d)
+    print('All words have been replaced!!!')
 
+#replace('C:/Users/hitma/Desktop/JUVO_GR_PRD_FIAT/1/Nova pasta/Novo Documento de Texto (2).txt', 'a', 'A')
+def replace(caminhoComArquivo, textoAntigo, textoNovo):
+    #Create temp file
+    fh, abs_path = mkstemp()
+    count = 1
+    with fdopen(fh,'w') as novoArquivo:
+        with open(caminhoComArquivo) as antigoArquivo:
+            for linha in antigoArquivo:
+                #if linha.lower() == '<trans_object_id/>':
+                #linha = linha.encode('utf8')
+                print(str(count) + ' ----------' + str(linha))
+                if re.search(str(linha.replace(' ','')), 'trans_object_id', re.IGNORECASE):
+                    print(str(count) + ' ----------' + linha)
+                    #count += 1
+                    #novoArquivo.write(linha.replace(textoAntigo, textoNovo))
+    #Copy the file permissions from the old file to the new file
+    #copymode(caminhoComArquivo, abs_path)
+    #Remove original file
+    #remove(caminhoComArquivo)
+    #Move new file
+    #move(abs_path, caminhoComArquivo)
 
 def menu_diretorios():
     title('Navegando pelo Menu DIRETORIOS')
@@ -90,7 +137,20 @@ def menu_diretorios():
             for arq in listar_arquivos(i):
                 files.append(arq)
             #files.append(i)
-        print(files)
+        #print(files)
+        #for i in files: print(i)
+        for file in files:
+            if file[-4:] == '.txt':
+                os.chdir(file)
+                Filelist = os.listdir()
+                print('File list: ',Filelist)
+
+                NomeFile = input ("Insert file name: ")
+
+                CarOr = input ("Text to search: ")
+
+                CarNew = input ("New text: ")
+
         #if re.search(texto1.lower(), texto2.lower(), re.IGNORECASE):
         #files.pop(-1)
         #for i in files: print(i)
@@ -103,4 +163,5 @@ def menu_diretorios():
         menu_diretorios()
 
 
-print(menu_diretorios())
+#print(menu_diretorios())
+replace('C:/Users/hitma/Desktop/JUVO_GR_PRD_FIAT/1/Nova pasta/Novo Documento de Texto (2).txt', 'a', 'A')
