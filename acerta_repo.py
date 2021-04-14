@@ -13,7 +13,15 @@ from tempfile import mkstemp
 from shutil import move, copymode
 from os import fdopen, remove
 
-caminhoPAI = 'C:/Users/hitma/Desktop/JUVO_GR_PRD_FIAT'
+caminhoInp = str(input('Diretório: '))
+caminhoPAI = caminhoInp.replace('\\', '/')
+varCaminho = "${Internal.Entry.Current.Directory}"
+#caminhoPAI = 'C:/Users/hitma/Desktop/JUVO_GR_PRD_FIAT'
+#caminhoPAI = "C:\Users\hitma\Desktop\ETLAS012 - Telefonia"
+campoDeBusca = '<trans_object_id'
+campoDeBusca2 = '<filename>'
+campoDeBusca3 = '<transname>'
+listaKtr = []
 
 def title(tl):
     print('=' * 80)
@@ -61,33 +69,101 @@ def word_replace(filename,old,new):
     print('All words have been replaced!!!')
 
 #replace('C:/Users/hitma/Desktop/JUVO_GR_PRD_FIAT/1/Nova pasta/Novo Documento de Texto (2).txt', 'a', 'A')
-def replace(caminhoComArquivo, textoAntigo, textoNovo):
+def replace(caminhoComArquivo):
     #Create temp file
     fh, abs_path = mkstemp()
-    count = 1
-    with fdopen(fh,'w') as novoArquivo:
-        with open(caminhoComArquivo) as antigoArquivo:
+    count = 0
+    proximo = False
+    proxdir = False
+    l1 = []
+    l2 = []
+    with fdopen(fh,'w',encoding="utf8") as novoArquivo:
+        with open(caminhoComArquivo, encoding="utf8") as antigoArquivo:
             for linha in antigoArquivo:
-                #if linha.lower() == '<trans_object_id/>':
-                #linha = linha.encode('utf8')
-                print(str(count) + ' ----------' + str(linha))
-                if re.search(str(linha.replace(' ','')), 'trans_object_id', re.IGNORECASE):
-                    print(str(count) + ' ----------' + linha)
-                    #count += 1
-                    #novoArquivo.write(linha.replace(textoAntigo, textoNovo))
+                ##########################################################
+                if bool(proxdir):
+                    #print('transname: ',caminhoComArquivo)
+                    if re.search(campoDeBusca3, str(linha), re.IGNORECASE):#<transname>
+                        linha, linha2 = localizaSubstitui_KTR(str(linha))
+                        l1.append(linha2)
+                        proxdir = False
+                        count += 1
+                if bool(proximo):
+                    #print('filename: ',caminhoComArquivo)
+                    if re.search(campoDeBusca2, str(linha), re.IGNORECASE): #<filename>
+                        linha, linha2 = localizaSubstitui_KTR(str(linha))
+                        l1.append(linha2)
+                        proximo = False
+                        count += 1
+                    else:
+                        proxdir = True
+                if not bool(proximo):
+                    if re.search(campoDeBusca, str(linha), re.IGNORECASE):#<trans_object_id>
+                        proximo = True
+                else:
+                    proximo = False
+                novoArquivo.write(linha)
+            l2.append(count)
+            l2.append(caminhoComArquivo)
+            count = 0
+            l2.append(l1)
+            listaKtr.append(l2)
+            l1 = []
+            l2 = []
     #Copy the file permissions from the old file to the new file
-    #copymode(caminhoComArquivo, abs_path)
+    copymode(caminhoComArquivo, abs_path)
     #Remove original file
-    #remove(caminhoComArquivo)
+    remove(caminhoComArquivo)
     #Move new file
-    #move(abs_path, caminhoComArquivo)
+    move(abs_path, caminhoComArquivo)
+
+def localizaSubstitui_KTR(text):
+    novoText = ''
+    if not re.search('.ktr', text, re.IGNORECASE):
+        print('localizaSubstitui_KTR: ' + str(text))
+        novoText = text.split('</')[0] + '.ktr</' + text.split('</')[1]
+        return novoText, text.split('</')[0].split('>')[1] + '.ktr'
+    else:
+        #print("tem: "+ text)
+        #listaKtr.append(text.split('</')[0].split('>')[1])
+        return text, text.split('</')[0].split('>')[1]
+
+def insereVariavelDir(dir, text):
+    #pega apenas diretório do text (do arquivo)
+    a = text.split('\\')
+    arquivo = a.pop(-1)
+    arquivo = arquivo.split('<')[0]
+    text = a[0].split('>')[1]
+    for i in a[1:]:
+        text += '/' + i
+        #pega apenas diretório do arquivo localizado
+        a = dir.split('/')
+        a.pop(-1)
+        dir = a[0]
+        for i in a[1:]:
+            dir += '/' + i
+        return dir, text
+
+def remove_repetidos(l):
+    lista = l
+    i = 0
+    while i < len(lista):
+        j = i + 1
+        while j < len(lista):
+            if lista[j] == lista[i]:
+                del(lista[j])
+            else:
+                j = j + 1
+        i = i + 1
+    return sorted(lista)
+
 
 def menu_diretorios():
     title('Navegando pelo Menu DIRETORIOS')
     print('Escolha sua opção: ')
     op = str(input('''
         [1] - Criar diretórios
-        [2] - Apagar diretórios
+        [2] - Acertar diretório com ${Internal.Entry.Current.Directory}.
         [3] - Acessar diretórios
         [4] - Listar Arquivos
         [5] - Por extenção .ktr (transformação)
@@ -97,7 +173,27 @@ def menu_diretorios():
 
     if op == '0':
         exit(1)
+# ------------------------------------------------------------------------------------------- #
 
+    elif op == '2':  # ACESSAR DIRETORIOS
+        print('_' * 40)
+        acess_dir(caminhoPAI)
+        tem = (str(input('Informe o nome da pasta a ser acessada: ')))
+        dir_acesso = tem
+        if not os.path.exists(dir_acesso):
+            j = 'S'
+            while j == 'S':
+                j = str(input('Pasta inexistente. Deseja tentar outra? [S/N]')).upper()
+        else:
+            for caminho, pastas, arquivos in os.walk(caminhoPAI):
+                for pasta in pastas[:]:
+                    if pasta == dir_acesso:
+                        caminho = tem
+                        os.chdir(caminho)
+                        print('Pasta acessada!')
+        print('_' * 40)
+
+        menu_diretorios()
 # ------------------------------------------------------------------------------------------- #
     elif op == '3':  # ACESSAR DIRETORIOS
         print('_' * 40)
@@ -129,39 +225,20 @@ def menu_diretorios():
         files = []
         for i in listar_arquivos(caminhoPAI):
             files.append(i)
-        #listar_subDiretorios(listar_arquivos(caminhoPAI))
-        #subfolders = [f.path for f in os.scandir(caminho) if f.is_dir()]
-        #files = listar_arquivos(caminhoPAI)
         for i in listar_subDiretorios(caminhoPAI):
-            #print(i)
             for arq in listar_arquivos(i):
                 files.append(arq)
-            #files.append(i)
-        #print(files)
-        #for i in files: print(i)
         for file in files:
-            if file[-4:] == '.txt':
-                os.chdir(file)
-                Filelist = os.listdir()
-                print('File list: ',Filelist)
+            if file[-4:] == '.kjb':
+                replace(file)
+        #A = remove_repetidos(listaKtr)
+        for i in sorted(listaKtr): print(i)
 
-                NomeFile = input ("Insert file name: ")
-
-                CarOr = input ("Text to search: ")
-
-                CarNew = input ("New text: ")
-
-        #if re.search(texto1.lower(), texto2.lower(), re.IGNORECASE):
-        #files.pop(-1)
-        #for i in files: print(i)
-        #print(str(listar_subDiretorios(caminhoPAI)))
-        #for i in range(len(listar_subDiretorios(caminhoPAI))):
-        #    print(str(i)+ '- ' + listar_subDiretorios(caminhoPAI)[i])
 # ------------------------------------------------------------------------------------------- #
     else:
         print("Esta opção não está nas alternativas, tente novamente.\n")
         menu_diretorios()
 
 
-#print(menu_diretorios())
-replace('C:/Users/hitma/Desktop/JUVO_GR_PRD_FIAT/1/Nova pasta/Novo Documento de Texto (2).txt', 'a', 'A')
+print(menu_diretorios())
+#replace('C:/Users/hitma/Desktop/JUVO_GR_PRD_FIAT/1/Nova pasta/Novo Documento de Texto (2).txt', 'a', 'A')
