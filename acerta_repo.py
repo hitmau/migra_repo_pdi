@@ -13,14 +13,15 @@ from tempfile import mkstemp
 from shutil import move, copymode
 from os import fdopen, remove
 
-caminhoInp = str(input('Diretório: '))
+caminhoInp = str(input('Diretório: '))#"C:\\Users\\hitma\\Desktop\\JUVO_GR_PRD_FIAT"#
 caminhoPAI = caminhoInp.replace('\\', '/')
-varCaminho = "${Internal.Entry.Current.Directory}"
+varCaminho = "Internal.Entry.Current.Directory"
 #caminhoPAI = 'C:/Users/hitma/Desktop/JUVO_GR_PRD_FIAT'
 #caminhoPAI = "C:\Users\hitma\Desktop\ETLAS012 - Telefonia"
 campoDeBusca = '<trans_object_id'
 campoDeBusca2 = '<filename>'
 campoDeBusca3 = '<transname>'
+campoDeBusca4 = '<directory>'
 listaKtr = []
 
 def title(tl):
@@ -73,36 +74,82 @@ def replace(caminhoComArquivo):
     #Create temp file
     fh, abs_path = mkstemp()
     count = 0
-    proximo = False
+    proximoKtr = False
+    proximoKjb = False
     proxdir = False
+    proxDirectoryKTR = False
+    proxDirectoryKJB = False
     l1 = []
     l2 = []
     with fdopen(fh,'w',encoding="utf8") as novoArquivo:
         with open(caminhoComArquivo, encoding="utf8") as antigoArquivo:
+            print(caminhoComArquivo)
+            qLinha = 1
             for linha in antigoArquivo:
                 ##########################################################
+                if bool(proxDirectoryKTR):
+                    if re.search('<directory>', str(linha), re.IGNORECASE):#<directory>
+                        #print(linha)
+                        linha2 = localizaSubstitui_KTR(str(linha))[1]
+                        linha = localizaSubstitui_KTRdir(str(linha), caminhoComArquivo)
+                        l1.append(linha2.replace('.ktr',''))
+                        proxDirectoryKTR = False
+                elif bool(proxDirectoryKJB):
+                    if re.search('<directory>', str(linha), re.IGNORECASE):#<directory>
+                        #print(linha)
+                        linha2 = localizaSubstitui_KTR(str(linha))[1]
+                        linha = localizaSubstitui_KTRdir(str(linha), caminhoComArquivo)
+                        l1.append(linha2.replace('.kjb',''))
+                        proxDirectoryKJB = False
                 if bool(proxdir):
                     #print('transname: ',caminhoComArquivo)
-                    if re.search(campoDeBusca3, str(linha), re.IGNORECASE):#<transname>
+                    if re.search('<transname>', str(linha), re.IGNORECASE):#<transname>
                         linha, linha2 = localizaSubstitui_KTR(str(linha))
                         l1.append(linha2)
                         proxdir = False
+                        proxDirectoryKTR = True
                         count += 1
-                if bool(proximo):
+                        print('V.4 - linha: ' + str(qLinha) + ' --- ' + linha.replace('\n',''))
+                    elif re.search('<jobname>', str(linha), re.IGNORECASE):#<jobname>
+                        linha, linha2 = localizaSubstitui_KJB(str(linha))
+                        l1.append(linha2)
+                        proxdir = False
+                        proxDirectoryKJB = True
+                        count += 1
+                        print('V.4 - linha: ' + str(qLinha) + ' --- ' + linha.replace('\n',''))
+                if bool(proximoKtr):
                     #print('filename: ',caminhoComArquivo)
-                    if re.search(campoDeBusca2, str(linha), re.IGNORECASE): #<filename>
+                    if re.search('<filename>', str(linha), re.IGNORECASE): #<filename>
                         linha, linha2 = localizaSubstitui_KTR(str(linha))
                         l1.append(linha2)
-                        proximo = False
+                        proximoKtr = False
+                        proxDirectoryKTR = False
                         count += 1
+                        print('V.7 - linhaKTR: ' + str(qLinha) + ' --- ' + linha.replace('\n',''))
                     else:
                         proxdir = True
-                if not bool(proximo):
-                    if re.search(campoDeBusca, str(linha), re.IGNORECASE):#<trans_object_id>
-                        proximo = True
+                elif bool(proximoKjb):
+                    #print('filename: ',caminhoComArquivo)
+                    if re.search('<filename>', str(linha), re.IGNORECASE): #<filename>
+                        linha, linha2 = localizaSubstitui_KJB(str(linha))
+                        l1.append(linha2)
+                        proximoKtr = False
+                        proxDirectoryKJB = False
+                        count += 1
+                        print('V.7 - linhaKJB: ' + str(qLinha) + ' --- ' + linha.replace('\n',''))
+                    else:
+                        proxdir = True
+                if not bool(proximoKtr):
+                    if re.search('<trans_object_id', str(linha), re.IGNORECASE):#<trans_object_id>
+                        proximoKtr = True
+                if not bool(proximoKjb):
+                    if re.search('<job_object_id', str(linha), re.IGNORECASE):#<job_object_id>
+                        proximoKjb = True
                 else:
-                    proximo = False
+                    proximoKtr = False
                 novoArquivo.write(linha)
+                qLinha += 1
+            qLinha = 1
             l2.append(count)
             l2.append(caminhoComArquivo)
             count = 0
@@ -120,13 +167,37 @@ def replace(caminhoComArquivo):
 def localizaSubstitui_KTR(text):
     novoText = ''
     if not re.search('.ktr', text, re.IGNORECASE):
-        print('localizaSubstitui_KTR: ' + str(text))
+        #print('localizaSubstitui_KTR: ' + str(text))
         novoText = text.split('</')[0] + '.ktr</' + text.split('</')[1]
         return novoText, text.split('</')[0].split('>')[1] + '.ktr'
     else:
         #print("tem: "+ text)
         #listaKtr.append(text.split('</')[0].split('>')[1])
         return text, text.split('</')[0].split('>')[1]
+
+def localizaSubstitui_KJB(text):
+    novoText = ''
+    if not re.search('.kjb', text, re.IGNORECASE):
+        #print('localizaSubstitui_KTR: ' + str(text))
+        novoText = text.split('</')[0] + '.kjb</' + text.split('</')[1]
+        return novoText, text.split('</')[0].split('>')[1] + '.kjb'
+    else:
+        #print("tem: "+ text)
+        #listaKtr.append(text.split('</')[0].split('>')[1])
+        return text, text.split('</')[0].split('>')[1]
+
+def localizaSubstitui_KTRdir(text, dirOrigem):
+    novoText = ''
+    print("antivo dir: " + text)
+    if len(text.split('</')[0].split('>')[1:]) == 1 and text.split('</')[0].split('>')[1:][0] == dirOrigem.split('/')[-2]:
+        #print('localizaSubstitui_KTR: ' + str(text))
+        novoText = text.split('</')[0].split('>')[0] + '>${' + varCaminho + '}</' + text.split('</')[1]
+        print("novo dir: " + novoText)
+        return novoText
+    else:
+        #print("tem: "+ text)
+        #listaKtr.append(text.split('</')[0].split('>')[1])
+        return text
 
 def insereVariavelDir(dir, text):
     #pega apenas diretório do text (do arquivo)
@@ -157,6 +228,40 @@ def remove_repetidos(l):
         i = i + 1
     return sorted(lista)
 
+def acertaDirKtr(lista1):
+    lista = []
+    count = 0
+    for i in range(len(lista1)):
+        try:
+            a = str(lista1[count+1] + '/')
+            b = str(lista1[count])
+            lista.append(a + b)
+            count += 2
+        except:
+                pass
+    return lista
+
+def invertKjb(string):
+    lCp = []
+    count = 1
+    for i in range(len(string.split('/'))):
+        inverso = len(string.split('/')) - count
+        lCp.append(string.split('/')[inverso])
+        count += 1
+    return lCp
+
+def invertKtr(lista):
+    lCs = []
+    for file in lista:
+        count = 1
+        lCs1 = []
+        for i in range(len(file.split('/'))):
+            #print(file.split('/')[i])
+            inverso = len(file.split('/')) - count
+            lCs1.append(file.split('/')[inverso])
+            count += 1
+        lCs.append(lCs1)
+    return lCs
 
 def menu_diretorios():
     title('Navegando pelo Menu DIRETORIOS')
@@ -173,8 +278,45 @@ def menu_diretorios():
 
     if op == '0':
         exit(1)
-# ------------------------------------------------------------------------------------------- #
 
+# ------------------------------------------------------------------------------------------- #
+    elif op == '5':  # POR EXTENÇÃO KTR
+        files = []
+        #(v) Lista todos os arquivos .kjb com excessão do diretório pai.
+        for i in listar_arquivos(caminhoPAI):
+            files.append(i)
+        #(v) Junta ma mesma lida acima. Todos os .Kjb da
+        for i in listar_subDiretorios(caminhoPAI):
+            for arq in listar_arquivos(i):
+                files.append(arq)
+        for file in files:
+            if file[-4:] == '.kjb':
+                replace(file)
+        """
+        l1 = []
+        for i in listaKtr:
+            print(i[2])
+            lista = []
+            lista.append(i[0])
+            lista.append(i[1])
+            lista.append(acertaDirKtr(i[2]))
+            l1.append(lista)
+        #(v) arruma os diretórios dos arquivos ktr para ficarem antes do nome do arquivo.
+        l2 = []
+        for i in l1:
+            lista = []
+            lista.append(i[0])
+            lista.append(invertKjb(i[1]))
+            lista.append(invertKtr(i[2]))
+            l2.append(lista)
+        #(A) OK
+
+        for kjb in l2:
+            for principal in kjb[1][1:]:
+                for ktrs in kjb[2][1:]:
+                    if principal == ktrs:
+        """
+# ------------------------------------------------------------------------------------------- #
     elif op == '2':  # ACESSAR DIRETORIOS
         print('_' * 40)
         acess_dir(caminhoPAI)
@@ -219,20 +361,7 @@ def menu_diretorios():
         print(listar_arquivos(caminhoPAI))
         print(os.getcwd())
         menu_diretorios()
-# ------------------------------------------------------------------------------------------- #
 
-    elif op == '5':  # POR EXTENÇÃO KTR
-        files = []
-        for i in listar_arquivos(caminhoPAI):
-            files.append(i)
-        for i in listar_subDiretorios(caminhoPAI):
-            for arq in listar_arquivos(i):
-                files.append(arq)
-        for file in files:
-            if file[-4:] == '.kjb':
-                replace(file)
-        #A = remove_repetidos(listaKtr)
-        for i in sorted(listaKtr): print(i)
 
 # ------------------------------------------------------------------------------------------- #
     else:
