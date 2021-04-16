@@ -102,7 +102,7 @@ def replace(caminhoComArquivo):
                 if bool(transname):
                     #print('transname: ',caminhoComArquivo)
                     if re.search('<transname>', str(linha), re.IGNORECASE):#<transname>
-                        linha, linha2 = localizaSubstitui_KTR(str(linha))
+                        linha, linha2 = localizaSubstitui_KTR(str(linha),'/')
                         l1.append(linha2)
                         transname = False
                         proxDirectory = True
@@ -122,7 +122,7 @@ def replace(caminhoComArquivo):
                 if bool(proximoKtr):
                     #print('filename: ',caminhoComArquivo)
                     if re.search('<filename>', str(linha), re.IGNORECASE): #<filename>
-                        linha, linha2 = localizaSubstitui_KTR(str(linha))
+                        linha, linha2 = localizaSubstitui_KTR(str(linha),caminhoComArquivo)
                         l1.append(linha2)
                         proximoKtr = False
                         proxDirectory = False
@@ -152,6 +152,7 @@ def replace(caminhoComArquivo):
                         proximoKjb = True
                 else:
                     proximoKtr = False
+                    proximoKjb = False
                 novoArquivo.write(linha)
                 qLinha += 1
             qLinha = 1
@@ -170,15 +171,16 @@ def replace(caminhoComArquivo):
     move(abs_path, caminhoComArquivo)
 
 def localizaSubstitui_KTR(text, dirOrigem):
-    novoText = ''
     if not re.search('.ktr', text, re.IGNORECASE):
-        #print('localizaSubstitui_KTR: ' + str(text))
-        novoText = text.split('</')[0] + '.ktr</' + text.split('</')[1]
-        return novoText, text.split('</')[0].split('>')[1] + '.ktr'
-    else:
-        #print("tem: "+ text)
-        #listaKtr.append(text.split('</')[0].split('>')[1])
-        return text, text.split('</')[0].split('>')[1]
+        text = text.split('</')[0] + '.ktr</' + text.split('</')[1]
+    #teste com / no inicio "/JUVO_GR_PRD_VWAUT/JUVO_GR_PRD_VWAUT_DIA_1001_PRECASTRO.kjb"
+    if text.replace('\\','/').split('>')[1][0] == '/':
+        if len(text.replace('\\','/').split('/')) == 4 and text.replace('\\','/').split('/')[1] == dirOrigem.replace('\\','/').split('/')[-2]:
+            text = '      <filename>${' + varCaminho + '}/' + text.split('</')[0].split('/')[-1] + '</filename>'
+    else: #teste sem / no inicio "JUVO_GR_PRD_VWAUT/JUVO_GR_PRD_VWAUT_DIA_1001_PRECASTRO.kjb"
+        if len(text.replace('\\','/').split('/')) == 3 and text.replace('\\','/').split('/')[0].split('>')[1] == dirOrigem.replace('\\','/').split('/')[-2]:
+            text = '      <filename>${' + varCaminho + '}/' + text.split('</')[0].split('/')[-1] + '</filename>'
+    return text, text.split('</')[0].split('>')[1]
 
 def localizaSubstitui_KJB(text, dirOrigem):
     if not re.search('.kjb', text, re.IGNORECASE):
@@ -195,7 +197,7 @@ def localizaSubstitui_KJB(text, dirOrigem):
 def localizaSubstitui_dir(text, dirOrigem):
     print("antivo dir: " + text)
     #teste com / no inicio "/JUVO_GR_PRD_VWAUT/JUVO_GR_PRD_VWAUT_DIA_1001_PRECASTRO.kjb"
-    if text.replace('\\','/').split('>')[1][0] == '/' and len(text.replace('\\','/').split('/')) == 4 and text.replace('\\','/').split('/')[1] == dirOrigem.replace('\\','/').split('/')[-2]:
+    if text.replace('\\','/').split('>')[1][0] == '/' and len(text.replace('\\','/').split('/')) == 3 and text.replace('\\','/').split('/')[1] == dirOrigem.replace('\\','/').split('/')[-2]:
         text = '      <filename>${' + varCaminho + '}/' + text.split('</')[0].split('/')[-1] + '</filename>'
     #teste sem / no inicio "JUVO_GR_PRD_VWAUT/JUVO_GR_PRD_VWAUT_DIA_1001_PRECASTRO.kjb"
     elif len(text.replace('\\','/').split('/')) == 3 and text.replace('\\','/').split('/')[0].split('>')[1] == dirOrigem.replace('\\','/').split('/')[-2]:
