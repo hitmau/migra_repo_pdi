@@ -77,8 +77,8 @@ def replace(caminhoComArquivo):
     proximoKtr = False
     proximoKjb = False
     transname = False
-    proxDirectoryKTR = False
-    proxDirectoryKJB = False
+    jobname = False
+    proxDirectory = False
     l1 = []
     l2 = []
     with fdopen(fh,'w',encoding="utf8") as novoArquivo:
@@ -86,35 +86,34 @@ def replace(caminhoComArquivo):
             print(caminhoComArquivo)
             qLinha = 1
             for linha in antigoArquivo:
-                ##########################################################
-                if bool(proxDirectoryKTR):
+                #----------</////////////////////////////////////////////////////////////////////////////////////////
+                #----------<directory> nome do diretório na versão 4
+                # passo (4)
+                if bool(proxDirectory):
                     if re.search('<directory>', str(linha), re.IGNORECASE):#<directory>
                         #print(linha)
-                        linha2 = localizaSubstitui_KTR(str(linha))[1]
-                        linha = localizaSubstitui_KTRdir(str(linha), caminhoComArquivo)
+                        linha2 = localizaSubstitui_KTR(str(linha),'/')[1]
+                        linha = localizaSubstitui_dir(str(linha), caminhoComArquivo)
                         l1.append(linha2.replace('.ktr',''))
-                        proxDirectoryKTR = False
-                elif bool(proxDirectoryKJB):
-                    if re.search('<directory>', str(linha), re.IGNORECASE):#<directory>
-                        #print(linha)
-                        linha2 = localizaSubstitui_KTR(str(linha))[1]
-                        linha = localizaSubstitui_KTRdir(str(linha), caminhoComArquivo)
-                        l1.append(linha2.replace('.kjb',''))
-                        proxDirectoryKJB = False
+                        proxDirectory = False
+                #----------</////////////////////////////////////////////////////////////////////////////////////////
+                #----------<transname> e <jobname> nome do arquivo na versão 4
+                # passo (3)
                 if bool(transname):
                     #print('transname: ',caminhoComArquivo)
                     if re.search('<transname>', str(linha), re.IGNORECASE):#<transname>
                         linha, linha2 = localizaSubstitui_KTR(str(linha))
                         l1.append(linha2)
                         transname = False
-                        proxDirectoryKTR = True
+                        proxDirectory = True
                         count += 1
                         print('V.4 - linha: ' + str(qLinha) + ' --- ' + linha.replace('\n',''))
-                    elif re.search('<jobname>', str(linha), re.IGNORECASE):#<jobname>
-                        linha, linha2 = localizaSubstitui_KJB(str(linha))
+                elif bool(jobname):
+                    if re.search('<jobname>', str(linha), re.IGNORECASE):#<jobname>
+                        linha, linha2 = localizaSubstitui_KJB(str(linha),'//')
                         l1.append(linha2)
-                        transname = False
-                        proxDirectoryKJB = True
+                        jobname = False
+                        proxDirectory = True
                         count += 1
                         print('V.4 - linha: ' + str(qLinha) + ' --- ' + linha.replace('\n',''))
                 #----------</////////////////////////////////////////////////////////////////////////////////////////
@@ -126,7 +125,7 @@ def replace(caminhoComArquivo):
                         linha, linha2 = localizaSubstitui_KTR(str(linha))
                         l1.append(linha2)
                         proximoKtr = False
-                        proxDirectoryKTR = False
+                        proxDirectory = False
                         count += 1
                         print('V.7 - linhaKTR: ' + str(qLinha) + ' --- ' + linha.replace('\n',''))
                     else:
@@ -134,14 +133,14 @@ def replace(caminhoComArquivo):
                 elif bool(proximoKjb):
                     #print('filename: ',caminhoComArquivo)
                     if re.search('<filename>', str(linha), re.IGNORECASE): #<filename>
-                        linha, linha2 = localizaSubstitui_KJB(str(linha))
+                        linha, linha2 = localizaSubstitui_KJB(str(linha), caminhoComArquivo)
                         l1.append(linha2)
-                        proximoKtr = False
-                        proxDirectoryKJB = False
+                        proximoKjb = False
+                        proxDirectory = False
                         count += 1
                         print('V.7 - linhaKJB: ' + str(qLinha) + ' --- ' + linha.replace('\n',''))
                     else:
-                        transname = True
+                        jobname = True
                 #----------</////////////////////////////////////////////////////////////////////////////////////////
                 #----------</////////////////////////////////////////////////////////////////////////////////////////
                 #passo (1)
@@ -170,7 +169,7 @@ def replace(caminhoComArquivo):
     #Move new file
     move(abs_path, caminhoComArquivo)
 
-def localizaSubstitui_KTR(text):
+def localizaSubstitui_KTR(text, dirOrigem):
     novoText = ''
     if not re.search('.ktr', text, re.IGNORECASE):
         #print('localizaSubstitui_KTR: ' + str(text))
@@ -182,43 +181,26 @@ def localizaSubstitui_KTR(text):
         return text, text.split('</')[0].split('>')[1]
 
 def localizaSubstitui_KJB(text, dirOrigem):
-    novoText = ''
-    ok = False
     if not re.search('.kjb', text, re.IGNORECASE):
-        novoText = text.split('</')[0] + '.kjb</' + text.split('</')[1]
-        ok = True
+        text = text.split('</')[0] + '.kjb</' + text.split('</')[1]
     #teste com / no inicio "/JUVO_GR_PRD_VWAUT/JUVO_GR_PRD_VWAUT_DIA_1001_PRECASTRO.kjb"
-    if novoText.replace('\\','/').split('>')[1][0] == '/':
-        if bool(ok) and len(novoText.replace('\\','/').split('/')) == 4 and novoText.replace('\\','/').split('/')[1] == dirOrigem.replace('\\','/').split('/')[-2]:
-            novoText = '      <filename>${' + varCaminho + '}/' + novoText.split('</')[0].split('/')[-1] + '</filename>'
-            ok = True
-        elif not bool(ok) and len(text.replace('\\','/').split('/')) == 4 and text.replace('\\','/').split('/')[1] == dirOrigem.replace('\\','/').split('/')[-2]:
-            novoText = '      <filename>${' + varCaminho + '}/' + text.split('</')[0].split('/')[-1] + '</filename>'
-            ok = True
+    if text.replace('\\','/').split('>')[1][0] == '/':
+        if len(text.replace('\\','/').split('/')) == 4 and text.replace('\\','/').split('/')[1] == dirOrigem.replace('\\','/').split('/')[-2]:
+            text = '      <filename>${' + varCaminho + '}/' + text.split('</')[0].split('/')[-1] + '</filename>'
     else: #teste sem / no inicio "JUVO_GR_PRD_VWAUT/JUVO_GR_PRD_VWAUT_DIA_1001_PRECASTRO.kjb"
-        if bool(ok) and len(novoText.replace('\\','/').split('/')) == 3 and novoText.replace('\\','/').split('/')[0].split('>')[1] == dirOrigem.replace('\\','/').split('/')[-2]:
-            novoText = '      <filename>${' + varCaminho + '}/' + novoText.split('</')[0].split('/')[-1] + '</filename>'
-            ok = True
-        elif not bool(ok) and len(text.replace('\\','/').split('/')) == 3 and text.replace('\\','/').split('/')[0].split('>')[1] == dirOrigem.replace('\\','/').split('/')[-2]:
-            novoText = '      <filename>${' + varCaminho + '}/' + text.split('</')[0].split('/')[-1] + '</filename>'
-            ok = True
-    if bool(ok):
-        return novoText, text.split('</')[0].split('>')[1] +'.kjb'
-    else:
-        return text, text.split('</')[0].split('>')[1] +'.kjb'
+        if len(text.replace('\\','/').split('/')) == 3 and text.replace('\\','/').split('/')[0].split('>')[1] == dirOrigem.replace('\\','/').split('/')[-2]:
+            text = '      <filename>${' + varCaminho + '}/' + text.split('</')[0].split('/')[-1] + '</filename>'
+    return text, text.split('</')[0].split('>')[1]
 
-def localizaSubstitui_KTRdir(text, dirOrigem):
-    novoText = ''
+def localizaSubstitui_dir(text, dirOrigem):
     print("antivo dir: " + text)
-    if len(text.split('</')[0].split('>')[1:]) == 1 and text.split('</')[0].split('>')[1:][0] == dirOrigem.split('/')[-2]:
-        #print('localizaSubstitui_KTR: ' + str(text))
-        novoText = text.split('</')[0].split('>')[0] + '>${' + varCaminho + '}</' + text.split('</')[1]
-        print("novo dir: " + novoText)
-        return novoText
-    else:
-        #print("tem: "+ text)
-        #listaKtr.append(text.split('</')[0].split('>')[1])
-        return text
+    #teste com / no inicio "/JUVO_GR_PRD_VWAUT/JUVO_GR_PRD_VWAUT_DIA_1001_PRECASTRO.kjb"
+    if text.replace('\\','/').split('>')[1][0] == '/' and len(text.replace('\\','/').split('/')) == 4 and text.replace('\\','/').split('/')[1] == dirOrigem.replace('\\','/').split('/')[-2]:
+        text = '      <filename>${' + varCaminho + '}/' + text.split('</')[0].split('/')[-1] + '</filename>'
+    #teste sem / no inicio "JUVO_GR_PRD_VWAUT/JUVO_GR_PRD_VWAUT_DIA_1001_PRECASTRO.kjb"
+    elif len(text.replace('\\','/').split('/')) == 3 and text.replace('\\','/').split('/')[0].split('>')[1] == dirOrigem.replace('\\','/').split('/')[-2]:
+        text = '      <filename>${' + varCaminho + '}/' + text.split('</')[0].split('/')[-1] + '</filename>'
+    return text
 
 def insereVariavelDir(dir, text):
     #pega apenas diretório do text (do arquivo)
