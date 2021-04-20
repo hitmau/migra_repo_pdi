@@ -210,14 +210,14 @@ def localizaSubstitui_dir(text, dirOrigem):
     #teste com / no inicio "/JUVO_GR_PRD_VWAUT/JUVO_GR_PRD_VWAUT_DIA_1001_PRECASTRO.kjb"
     if text[0] == '/' and len(text.split('/')) == 2 and text.split('/')[1] == dirOrigem.replace('\\','/').split('/')[-2]:
         text = '      <directory>${' + varCaminho + '}' + text + '</directory>'
-        print("Novo dir: " + text.replace('\n',''))
+        print("Novo dir1: " + text.replace('\n',''))
     #teste sem / no inicio "JUVO_GR_PRD_VWAUT/JUVO_GR_PRD_VWAUT_DIA_1001_PRECASTRO.kjb"
     elif len(text.split('/')) == 2 and text.split('/')[1] == dirOrigem.replace('\\','/').split('/')[-2]:
         text = '      <directory>${' + varCaminho + '}/' + text + '</filename>'
-        print("Novo dir: " + text.replace('\n',''))
+        print("Novo dir2: " + text.replace('\n',''))
     else:
-        text = '      <directory>' + newDir(text, dirOrigem) + '</directory>\n'
-        print("Novo dir: " + text.replace('\n',''))
+        text = '      <directory>' + newDir(text.replace('\n',''), dirOrigem) + '</directory>\n'
+        print("Novo dir3: " + text.replace('\n',''))
     return text
 
 def countDir(text, ultimoDir):
@@ -247,23 +247,25 @@ def newDir(text, dirOrigem):
     for i in range(countDir):
         print("dir-"+listaDir[countDir])
         for j in range(countText):
-            print("text-"+listaText[countText])
+            #print("text-"+listaText[countText])
             if listaDir[countDir] == listaText[countText]:
                 lista.append(listaText[countText])
                 countText -= 1
                 encontrou = True
                 break
-        print(countText)
+        if bool(encontrou):
+            break
         countDir -= 1
+    print(lista)
     lista = lista[:-1]
     index = len(lista) -1
     for i in range(len(lista)):
         var = var + '/' + lista[index]
         index -= 1
     if bool(encontrou):
-        return var
+        return var.replace('\n','')
     else:
-        return text
+        return text.replace('\n','')
 
 def insereVariavelDir(dir, text):
     #pega apenas diretório do text (do arquivo)
