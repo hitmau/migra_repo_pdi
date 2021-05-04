@@ -49,6 +49,17 @@ def listar_subDiretorios(caminho):
         subfolders.sort()
     return subfolders
 
+def listarGeral():
+    files = []
+    #(v) Lista todos os arquivos com excessão do diretório pai.
+    for i in listar_arquivos(caminhoPAI):
+        files.append(i)
+    #(v) Junta ma mesma lista acima.
+    for i in listar_subDiretorios(caminhoPAI):
+        for arq in listar_arquivos(i):
+            files.append(arq)
+    return files
+
 def word_replace(filename,old,new):
     c=0
     with io.open(filename,'r+', encoding='utf8') as f:
@@ -243,6 +254,8 @@ def localizaSubstitui_dir(text, dirOrigem):
         print("Novo dir3: " + text.replace('\n',''))
     return text
 
+########################################################################################################
+
 def countDir(text, ultimoDir):
     textOriginal = text
     dir = text.split('/')
@@ -258,6 +271,8 @@ def countDir(text, ultimoDir):
             text = text + '/' + dir[i]
     textOriginal = text
     return text.replace('\n','')
+
+########################################################################################################
 
 def newDir(text, dirOrigem):
     var = '${'+ varCaminho + '}'
@@ -290,6 +305,8 @@ def newDir(text, dirOrigem):
     else:
         return text.replace('\n','')
 
+########################################################################################################
+
 def insereVariavelDir(dir, text):
     #pega apenas diretório do text (do arquivo)
     a = text.split('\\')
@@ -306,6 +323,8 @@ def insereVariavelDir(dir, text):
             dir += '/' + i
         return dir, text
 
+########################################################################################################
+
 def remove_repetidos(l):
     lista = l
     i = 0
@@ -318,6 +337,8 @@ def remove_repetidos(l):
                 j = j + 1
         i = i + 1
     return sorted(lista)
+
+########################################################################################################
 
 def acertaDirKtr(lista1):
     lista = []
@@ -332,6 +353,8 @@ def acertaDirKtr(lista1):
                 pass
     return lista
 
+########################################################################################################
+
 def invertKjb(string):
     lCp = []
     count = 1
@@ -340,6 +363,8 @@ def invertKjb(string):
         lCp.append(string.split('/')[inverso])
         count += 1
     return lCp
+
+########################################################################################################
 
 def invertKtr(lista):
     lCs = []
@@ -353,6 +378,8 @@ def invertKtr(lista):
             count += 1
         lCs.append(lCs1)
     return lCs
+
+########################################################################################################
 
 def gravaRelatorio(dir, lista): #gravaRelatorio("C:/Users/hitma/Documents/Github/migra_repo_pdi/Nova pasta", lista)
     nomeArquivo = dir + "/relatorio.txt"
@@ -370,6 +397,8 @@ def gravaRelatorio(dir, lista): #gravaRelatorio("C:/Users/hitma/Documents/Github
     except Exception as e:
         print("Erro ao criar arquivo Relatório! " + str(e))
 
+########################################################################################################
+
 def remove_repetidos(lista):
     l = []
     for i in lista:
@@ -377,6 +406,113 @@ def remove_repetidos(lista):
             l.append(i)
     l.sort()
     return l
+
+########################################################################################################
+
+def stringConn(server = '', database = '', port = '', name = '', tipo = ''):
+    if server == None:
+        server = ''
+    try:
+        # POSTGRESQS /////////////////////////////////////////////////////////
+        if tipo == 'POSTGRESQL':
+            if server == None:
+                return 'javax.sql.DataSource', 'org.postgresql.Driver', database
+            else:
+                return 'javax.sql.DataSource', 'org.postgresql.Driver', 'jdbc:postgresql://' + server + ':' + str(port) + '/hibernate?searchpath=' + name
+        # ORACLE /////////////////////////////////////////////////////////
+        elif tipo == 'ORACLE':
+            if server == None:
+                return 'javax.sql.DataSource', 'oracle.jdbc.OracleDriver', 'jdbc:oracle:thin:@' + database
+            else:
+                return 'javax.sql.DataSource', 'oracle.jdbc.OracleDriver', 'jdbc:oracle:thin:@(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=' + server + ')(PORT=' + str(port) + '))(LOAD_BALANCE=yes)(FAILOVER=TRUE))(CONNECT_DATA=(SERVICE_NAME=' + name + ')(FAILOVER_mode=(TYPE=SELECT)(METHOD=BASIC)(RETRIES=180)(DELAY=5))))'
+        # MSSQL /////////////////////////////////////////////////////////
+        elif tipo == 'MSSQL':
+            if server == None:
+                return 'não', 'sei', database
+            else:
+                return 'não', 'sei', 'conexao'
+        # MSSQLNATIVE /////////////////////////////////////////////////////////
+        elif tipo == 'MSSQLNATIVE':
+            if server == None:
+                return 'javax.sql.DataSource', 'driver MSSQLNATIVE', database
+            else:
+                return 'javax.sql.DataSource', 'driver MSSQLNATIVE', server
+        # POSTGRESQS /////////////////////////////////////////////////////////
+        else:
+            if server == None:
+                return 'javax.sql.DataSource', 'driver de conexao', database
+            else:
+                return 'javax.sql.DataSource', 'driver de conexao', server
+    except Exception as e:
+        print("Erro: " + str(e))
+
+########################################################################################################
+
+def conexoes():
+    geral = []
+    for file in listarGeral():
+        try:
+            #print(files)#if file[-4:] == '.kjb':
+            with open('C:/Users/hitma/Desktop/Assistencia_original/JUVO_GR_PRD_CAIXA/DT_PROCESSO_DIA_1003.ktr') as files: #file) as files:#
+                doc = xmltodict.parse(files.read())
+            try:
+                for i in doc['job']['connection']:
+                    l = []
+                    nomeConn = i['name'] + '/'
+                    type, driver, url = stringConn(i['server'],i['database'], i['port'], i['name'], i['type'])
+                    print(nomeConn + 'type=' + str(i['type']))
+                    print(nomeConn + 'server=' + str(i['server']))
+                    print(nomeConn + 'database=' + str(i['database']))
+                    print(nomeConn + 'port=' + str(i['port']))
+                    print(nomeConn + 'name=' + str(i['name']))
+                    print(nomeConn + 'user=' + str(i['username']))
+                    print(nomeConn + 'password=' + str(i['password']))
+                    print()
+                    #l.append(nomeConn + 'name=' + str(i['name']))
+                    #l.append(nomeConn + 'type=' + str(i['type']))
+                    #l.append(nomeConn + 'server=' + str(i['server']))
+                    #l.append(nomeConn + 'database=' + str(i['database']))
+                    #l.append(nomeConn + 'port=' + str(i['port']))
+                    #l.append(nomeConn + 'user=' + str(i['username']))
+                    #l.append(nomeConn + 'password=' + str(i['password']))
+                    l.append(nomeConn + 'type=' + str(type))
+                    l.append(nomeConn + 'driver=' + str(driver))
+                    l.append(nomeConn + 'url=' + str(url))
+                    l.append(nomeConn + 'user=' + str(i['username']))
+                    l.append(nomeConn + 'password=' + str(i['password']))
+                    geral.append(l)
+            except:
+                for i in doc['transformation']['connection']:
+                    l = []
+                    nomeConn = i['name'] + '/'
+                    type, driver, url = stringConn(i['server'],i['database'], i['port'], i['name'], i['type'])
+                    print(nomeConn + 'type=' + str(i['type']))
+                    print(nomeConn + 'server=' + str(i['server']))
+                    print(nomeConn + 'database=' + str(i['database']))
+                    print(nomeConn + 'port=' + str(i['port']))
+                    print(nomeConn + 'name=' + str(i['name']))
+                    print(nomeConn + 'user=' + str(i['username']))
+                    print(nomeConn + 'password=' + str(i['password']))
+                    print()
+                    #l.append(nomeConn + 'name=' + str(i['name']))
+                    #l.append(nomeConn + 'type=' + str(i['type']))
+                    #l.append(nomeConn + 'server=' + str(i['server']))
+                    #l.append(nomeConn + 'database=' + str(i['database']))
+                    #l.append(nomeConn + 'port=' + str(i['port']))
+                    #l.append(nomeConn + 'user=' + str(i['username']))
+                    #l.append(nomeConn + 'password=' + str(i['password']))
+                    l.append(nomeConn + 'type=' + str(type))
+                    l.append(nomeConn + 'driver=' + str(driver))
+                    l.append(nomeConn + 'url=' + str(url))
+                    l.append(nomeConn + 'user=' + str(i['username']))
+                    l.append(nomeConn + 'password=' + str(i['password']))
+                    geral.append(l)
+                pass
+        except Exception as a:
+            print(file)
+            print("Erro no arquivo: " + str(a))
+            pass
+    return geral
 
 
 def menu_diretorios():
@@ -398,29 +534,13 @@ def menu_diretorios():
 
 # ------------------------------------------------------------------------------------------- #
     elif op == '1':  # POR EXTENÇÃO KTR
-        files = []
-        #(v) Lista todos os arquivos .kjb com excessão do diretório pai.
-        for i in listar_arquivos(caminhoPAI):
-            files.append(i)
-        #(v) Junta ma mesma lida acima. Todos os .Kjb da
-        for i in listar_subDiretorios(caminhoPAI):
-            for arq in listar_arquivos(i):
-                files.append(arq)
-        for file in files:
+        for file in listarGeral():
             #if file[-4:] == '.kjb':
             replace2(file)
 
 # ------------------------------------------------------------------------------------------- #
     elif op == '5':  # POR EXTENÇÃO KTR
-        files = []
-        #(v) Lista todos os arquivos .kjb com excessão do diretório pai.
-        for i in listar_arquivos(caminhoPAI):
-            files.append(i)
-        #(v) Junta ma mesma lida acima. Todos os .Kjb da
-        for i in listar_subDiretorios(caminhoPAI):
-            for arq in listar_arquivos(i):
-                files.append(arq)
-        for file in files:
+        for file in listarGeral():
             if file[-4:] == '.kjb':
                 replace(file)
         """
@@ -490,131 +610,11 @@ def menu_diretorios():
 
 # ------------------------------------------------------------------------------------------- #
     elif op == '6':  # POR EXTENÇÃO KTR
-def a():
-    files = []
-    #(v) Lista todos os arquivos .kjb com excessão do diretório pai.
-    for i in listar_arquivos(caminhoPAI):
-        files.append(i)
-    #(v) Junta ma mesma lida acima. Todos os .Kjb da
-    for i in listar_subDiretorios(caminhoPAI):
-        for arq in listar_arquivos(i):
-            files.append(arq)
-    geral = []
-    for file in files:
-        try:
-            #print(files)#if file[-4:] == '.kjb':
-            with open('C:/Users/hitma/Desktop/Assistencia_original/JUVO_GR_PRD_CAIXA/DT_PROCESSO_DIA_1003.ktr') as files: #file) as files:#
-                doc = xmltodict.parse(files.read())
-            try:
-                for i in doc['job']['connection']:
-                    l = []
-                    nomeConn = i['name'] + '/'
-                    type, driver, url = stringConn(i['server'],i['database'], i['port'], i['name'], i['type'])
-                    print(nomeConn + 'type=' + str(i['type']))
-                    print(nomeConn + 'server=' + str(i['server']))
-                    print(nomeConn + 'database=' + str(i['database']))
-                    print(nomeConn + 'port=' + str(i['port']))
-                    print(nomeConn + 'name=' + str(i['name']))
-                    print(nomeConn + 'user=' + str(i['username']))
-                    print(nomeConn + 'password=' + str(i['password']))
-                    print()
-                    l.append(nomeConn + 'name=' + str(i['name']))
-                    l.append(nomeConn + 'type=' + str(i['type']))
-                    l.append(nomeConn + 'server=' + str(i['server']))
-                    l.append(nomeConn + 'database=' + str(i['database']))
-                    l.append(nomeConn + 'port=' + str(i['port']))
-                    l.append(nomeConn + 'user=' + str(i['username']))
-                    l.append(nomeConn + 'password=' + str(i['password']))
-                    geral.append(l)
-            except:
-                for i in doc['transformation']['connection']:
-                    l = []
-                    nomeConn = i['name'] + '/'
-                    type, driver, url = stringConn(i['server'],i['database'], i['port'], i['name'], i['type'])
-                    print(nomeConn + 'type=' + str(i['type']))
-                    print(nomeConn + 'server=' + str(i['server']))
-                    print(nomeConn + 'database=' + str(i['database']))
-                    print(nomeConn + 'port=' + str(i['port']))
-                    print(nomeConn + 'name=' + str(i['name']))
-                    print(nomeConn + 'user=' + str(i['username']))
-                    print(nomeConn + 'password=' + str(i['password']))
-                    print()
-                    l.append(nomeConn + 'name=' + str(i['name']))
-                    l.append(nomeConn + 'type=' + str(i['type']))
-                    l.append(nomeConn + 'server=' + str(i['server']))
-                    l.append(nomeConn + 'database=' + str(i['database']))
-                    l.append(nomeConn + 'port=' + str(i['port']))
-                    l.append(nomeConn + 'user=' + str(i['username']))
-                    l.append(nomeConn + 'password=' + str(i['password']))
-                    geral.append(l)
-                pass
-        except Exception as a:
-            print(file)
-            print("Erro no arquivo: " + str(a))
-            pass
-    return geral
-
-
-for i in doc['transformation']['connection']:
-    l = []
-    nomeConn = i['name'] + '/'
-    type, driver, url = stringConn(i['server'],i['database'], i['port'], i['name'], i['type'])
-    print(nomeConn + 'type=' + str(i['type']))
-    print(nomeConn + 'server=' + str(i['server']))
-    print(nomeConn + 'database=' + str(i['database']))
-    print(nomeConn + 'port=' + str(i['port']))
-    print(nomeConn + 'name=' + str(i['name']))
-    print(nomeConn + 'user=' + str(i['username']))
-    print(nomeConn + 'password=' + str(i['password']))
-    print()
-    l.append(nomeConn + 'type=' + str(i['type']))
-    l.append(nomeConn + 'server=' + str(i['server']))
-    l.append(nomeConn + 'database=' + str(i['database']))
-    l.append(nomeConn + 'port=' + str(i['port']))
-    l.append(nomeConn + 'name=' + str(i['name']))
-    l.append(nomeConn + 'user=' + str(i['username']))
-    l.append(nomeConn + 'password=' + str(i['password']))
-    geral.append(l)
+        lista = conexoes()
 
 
 
 
-def stringConn(server = '', database = '', port = '', name = '', tipo = ''):
-    if server == None:
-        server = ''
-    try:
-        # POSTGRESQS /////////////////////////////////////////////////////////
-        if tipo == 'POSTGRESQL':
-            if server == None:
-                return 'javax.sql.DataSource', 'org.postgresql.Driver', database
-            else:
-                return 'javax.sql.DataSource', 'org.postgresql.Driver', 'jdbc:postgresql://' + server + ':' + str(port) + '/hibernate?searchpath=' + name
-        # ORACLE /////////////////////////////////////////////////////////
-        elif tipo == 'ORACLE':
-            if server == None:
-                return 'javax.sql.DataSource', 'oracle.jdbc.OracleDriver', 'jdbc:oracle:thin:@' + database
-            else:
-                return 'javax.sql.DataSource', 'oracle.jdbc.OracleDriver', 'jdbc:oracle:thin:@(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=' + server + ')(PORT=' + str(port) + '))(LOAD_BALANCE=yes)(FAILOVER=TRUE))(CONNECT_DATA=(SERVICE_NAME=' + name + ')(FAILOVER_mode=(TYPE=SELECT)(METHOD=BASIC)(RETRIES=180)(DELAY=5))))'
-        # MSSQL /////////////////////////////////////////////////////////
-        elif tipo == 'MSSQL':
-            if server == None:
-                return 'não', 'sei', database
-            else:
-                return 'não', 'sei', 'conexao'
-        # MSSQLNATIVE /////////////////////////////////////////////////////////
-        elif tipo == 'MSSQLNATIVE':
-            if server == None:
-                return 'não', 'sei', database
-            else:
-                return 'não', 'sei', 'conexao'
-        # POSTGRESQS /////////////////////////////////////////////////////////
-        else:
-            if server == None:
-                return 'não', 'sei', database
-            else:
-                return 'não', 'sei', 'conexao'
-    except Exception as e:
-        print("Erro: " + str(e))
 
 
 # ------------------------------------------------------------------------------------------- #
