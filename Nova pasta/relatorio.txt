@@ -1,872 +1,654 @@
-10.2.0.150/name=10.2.0.150
-10.2.0.150/type=MSSQL
-10.2.0.150/server=10.2.0.150
-10.2.0.150/database=ORIG_TEMPOSAUDE
-10.2.0.150/port=1433
+10.2.0.150/type=javax.sql.DataSource
+10.2.0.150/driver=com.microsoft.sqlserver.jdbc.SQLServerDriver
+10.2.0.150/url=jdbc:sqlserver://10.2.0.150:1433;databasename=ORIG_TEMPOSAUDE;integratedsecurity=true
 10.2.0.150/user=processamento
 10.2.0.150/password=Encrypted 2be98afc86aa7f2e4cb18ac7e8bc1f682
 
-10.2.0.170/name=10.2.0.170
-10.2.0.170/type=MSSQL
-10.2.0.170/server=10.2.0.170
-10.2.0.170/database=easydental_prevdonto
-10.2.0.170/port=1433
+10.2.0.170/type=javax.sql.DataSource
+10.2.0.170/driver=com.microsoft.sqlserver.jdbc.SQLServerDriver
+10.2.0.170/url=jdbc:sqlserver://10.2.0.170:1433;databasename=easydental_prevdonto;integratedsecurity=true
 10.2.0.170/user=easy
 10.2.0.170/password=Encrypted 2be98afc86aa7f2e4cb79ce10c781aedf
 
-AgileBI/name=AgileBI
-AgileBI/type=MONETDB
-AgileBI/server=localhost
-AgileBI/database=pentaho-instaview
-AgileBI/port=50006
+AgileBI/type=javax.sql.DataSource
+AgileBI/driver=driver MSSQLNATIVE
+AgileBI/url=jdbc:monetdb://localhost:50006/pentaho-instaview
 AgileBI/user=monetdb
 AgileBI/password=Encrypted 2be98afc86aa7f2e4cb14a17edb86abd8
 
-BIHML/name=BIHML
-BIHML/type=ORACLE
-BIHML/server=10.2.0.100
-BIHML/database=BIHML
-BIHML/port=1521
+BIHML/type=javax.sql.DataSource
+BIHML/driver=oracle.jdbc.OracleDriver
+BIHML/url=jdbc:oracle:thin:@10.2.0.100:1521:BIHML
 BIHML/user=biprd
 BIHML/password=Encrypted 2be98afc86aa7f286a209bc74e19aa2d6
 
-BIHML_ODS/name=BIHML_ODS
-BIHML_ODS/type=ORACLE
-BIHML_ODS/server=10.2.0.100
-BIHML_ODS/database=BIHML
-BIHML_ODS/port=1521
+BIHML_ODS/type=javax.sql.DataSource
+BIHML_ODS/driver=oracle.jdbc.OracleDriver
+BIHML_ODS/url=jdbc:oracle:thin:@10.2.0.100:1521:BIHML
 BIHML_ODS/user=ods
 BIHML_ODS/password=Encrypted 2be98afc86aa7f2e4cb16aa63e19aa2d6
 
-BIHML_SAPRD/name=BIHML_SAPRD
-BIHML_SAPRD/type=ORACLE
-BIHML_SAPRD/server=10.2.0.100
-BIHML_SAPRD/database=BIHML
-BIHML_SAPRD/port=1521
+BIHML_SAPRD/type=javax.sql.DataSource
+BIHML_SAPRD/driver=oracle.jdbc.OracleDriver
+BIHML_SAPRD/url=jdbc:oracle:thin:@10.2.0.100:1521:BIHML
 BIHML_SAPRD/user=saprd
 BIHML_SAPRD/password=Encrypted 2be98afc86aa7f297aa09bc74e19aa2d6
 
-BIPRD/name=BIPRD
-BIPRD/type=ORACLE
-BIPRD/server=None
-BIPRD/database=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=exa01-scan.br1.ocm.s7060035.oraclecloudatcustomer.com)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=BIPRD.br1.ocm.s7060035.oraclecloudatcustomer.com)))
-BIPRD/port=-1
+BIPRD/type=javax.sql.DataSource
+BIPRD/driver=oracle.jdbc.OracleDriver
+BIPRD/url=jdbc:oracle:thin:@:-1:(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=exa01-scan.br1.ocm.s7060035.oraclecloudatcustomer.com)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=BIPRD.br1.ocm.s7060035.oraclecloudatcustomer.com)))
 BIPRD/user=biprd
 BIPRD/password=Encrypted 2be98afc86ac59b94b91d9160cc96add3
 
-BIPRD11G/name=BIPRD11G
-BIPRD11G/type=ORACLE
-BIPRD11G/server=None
-BIPRD11G/database=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=exa01-scan.br1.ocm.s7060035.oraclecloudatcustomer.com)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=BIPRD.br1.ocm.s7060035.oraclecloudatcustomer.com)))
-BIPRD11G/port=-1
+BIPRD11G/type=javax.sql.DataSource
+BIPRD11G/driver=oracle.jdbc.OracleDriver
+BIPRD11G/url=jdbc:oracle:thin:@:-1:(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=exa01-scan.br1.ocm.s7060035.oraclecloudatcustomer.com)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=BIPRD.br1.ocm.s7060035.oraclecloudatcustomer.com)))
 BIPRD11G/user=BIPRD
 BIPRD11G/password=Encrypted 2be98afc86ac59b94b91d9160cc96add3
 
-BIPRD_OCI/name=BIPRD_OCI
-BIPRD_OCI/type=ORACLE
-BIPRD_OCI/server=None
-BIPRD_OCI/database=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=exa01-scan.br1.ocm.s7060035.oraclecloudatcustomer.com)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=BIPRD.br1.ocm.s7060035.oraclecloudatcustomer.com)))
-BIPRD_OCI/port=1521
+BIPRD_OCI/type=javax.sql.DataSource
+BIPRD_OCI/driver=oracle.jdbc.OracleDriver
+BIPRD_OCI/url=jdbc:oracle:thin:@:1521:(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=exa01-scan.br1.ocm.s7060035.oraclecloudatcustomer.com)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=BIPRD.br1.ocm.s7060035.oraclecloudatcustomer.com)))
 BIPRD_OCI/user=biprd
 BIPRD_OCI/password=Encrypted 2be98afc86ac59b94b91d9160cc96add3
 
-BIPRD_ODS/name=BIPRD_ODS
-BIPRD_ODS/type=ORACLE
-BIPRD_ODS/server=None
-BIPRD_ODS/database=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=exa01-scan.br1.ocm.s7060035.oraclecloudatcustomer.com)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=BIPRD.br1.ocm.s7060035.oraclecloudatcustomer.com)))
-BIPRD_ODS/port=-1
+BIPRD_ODS/type=javax.sql.DataSource
+BIPRD_ODS/driver=oracle.jdbc.OracleDriver
+BIPRD_ODS/url=jdbc:oracle:thin:@:-1:(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=exa01-scan.br1.ocm.s7060035.oraclecloudatcustomer.com)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=BIPRD.br1.ocm.s7060035.oraclecloudatcustomer.com)))
 BIPRD_ODS/user=ODS
 BIPRD_ODS/password=Encrypted 2be98afc86aa7f2e4cb18ac7e8bc1f682
 
-BIPRD_PROCESSAMENTO/name=BIPRD_PROCESSAMENTO
-BIPRD_PROCESSAMENTO/type=ORACLE
-BIPRD_PROCESSAMENTO/server=None
-BIPRD_PROCESSAMENTO/database=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=exa01-scan.br1.ocm.s7060035.oraclecloudatcustomer.com)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=BIPRD.br1.ocm.s7060035.oraclecloudatcustomer.com)))
-BIPRD_PROCESSAMENTO/port=-1
+BIPRD_PROCESSAMENTO/type=javax.sql.DataSource
+BIPRD_PROCESSAMENTO/driver=oracle.jdbc.OracleDriver
+BIPRD_PROCESSAMENTO/url=jdbc:oracle:thin:@:-1:(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=exa01-scan.br1.ocm.s7060035.oraclecloudatcustomer.com)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=BIPRD.br1.ocm.s7060035.oraclecloudatcustomer.com)))
 BIPRD_PROCESSAMENTO/user=Processamento
 BIPRD_PROCESSAMENTO/password=Encrypted 2be98afc86aa7f2e4cb18ac7e8bc1f682
 
-BIPRD_USER_BIPRD/name=BIPRD_USER_BIPRD
-BIPRD_USER_BIPRD/type=ORACLE
-BIPRD_USER_BIPRD/server=None
-BIPRD_USER_BIPRD/database=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=exa01-scan.br1.ocm.s7060035.oraclecloudatcustomer.com)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=BIPRD.br1.ocm.s7060035.oraclecloudatcustomer.com)))
-BIPRD_USER_BIPRD/port=-1
+BIPRD_USER_BIPRD/type=javax.sql.DataSource
+BIPRD_USER_BIPRD/driver=oracle.jdbc.OracleDriver
+BIPRD_USER_BIPRD/url=jdbc:oracle:thin:@:-1:(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=exa01-scan.br1.ocm.s7060035.oraclecloudatcustomer.com)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=BIPRD.br1.ocm.s7060035.oraclecloudatcustomer.com)))
 BIPRD_USER_BIPRD/user=biprd
 BIPRD_USER_BIPRD/password=Encrypted 2be98afc86ac59b94b91d9160cc96add3
 
-BI_Pentaho/name=BI_Pentaho
-BI_Pentaho/type=ORACLE
-BI_Pentaho/server=10.85.10.42
-BI_Pentaho/database=BIPRD
-BI_Pentaho/port=1580
+BI_Pentaho/type=javax.sql.DataSource
+BI_Pentaho/driver=oracle.jdbc.OracleDriver
+BI_Pentaho/url=jdbc:oracle:thin:@10.85.10.42:1580:BIPRD
 BI_Pentaho/user=pentaho
 BI_Pentaho/password=Encrypted 2be98afc86aa78681a609a14f8cc2ff83
 
-BI_prodkettle/name=BI_prodkettle
-BI_prodkettle/type=ORACLE
-BI_prodkettle/server=10.85.10.42
-BI_prodkettle/database=BIPRD
-BI_prodkettle/port=1580
+BI_prodkettle/type=javax.sql.DataSource
+BI_prodkettle/driver=oracle.jdbc.OracleDriver
+BI_prodkettle/url=jdbc:oracle:thin:@10.85.10.42:1580:BIPRD
 BI_prodkettle/user=pentaho
 BI_prodkettle/password=Encrypted 2be98afc86aa78681a609a14f8cc2ff83
 
-BONIPRD_EXA/name=BONIPRD_EXA
-BONIPRD_EXA/type=ORACLE
-BONIPRD_EXA/server=None
-BONIPRD_EXA/database=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=exa01-scan.br1.ocm.s7060035.oraclecloudatcustomer.com)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=boniprd.br1.ocm.s7060035.oraclecloudatcustomer.com)))
-BONIPRD_EXA/port=-1
+BONIPRD_EXA/type=javax.sql.DataSource
+BONIPRD_EXA/driver=oracle.jdbc.OracleDriver
+BONIPRD_EXA/url=jdbc:oracle:thin:@:-1:(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=exa01-scan.br1.ocm.s7060035.oraclecloudatcustomer.com)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=boniprd.br1.ocm.s7060035.oraclecloudatcustomer.com)))
 BONIPRD_EXA/user=user_bi
 BONIPRD_EXA/password=Encrypted 2be98dabb0fd5ad86a21ba74fcb81aac8
 
-BONITAPRD-EXA/name=BONITAPRD-EXA
-BONITAPRD-EXA/type=ORACLE
-BONITAPRD-EXA/server=None
-BONITAPRD-EXA/database=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=exa01-scan.br1.ocm.s7060035.oraclecloudatcustomer.com)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=boniprd.br1.ocm.s7060035.oraclecloudatcustomer.com)))
-BONITAPRD-EXA/port=-1
+BONITAPRD-EXA/type=javax.sql.DataSource
+BONITAPRD-EXA/driver=oracle.jdbc.OracleDriver
+BONITAPRD-EXA/url=jdbc:oracle:thin:@:-1:(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=exa01-scan.br1.ocm.s7060035.oraclecloudatcustomer.com)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=boniprd.br1.ocm.s7060035.oraclecloudatcustomer.com)))
 BONITAPRD-EXA/user=USER_BI
 BONITAPRD-EXA/password=Encrypted 2be98dabb0fd5ad86a21ba74fcb81aac8
 
-BONITA_USER_BI/name=BONITA_USER_BI
-BONITA_USER_BI/type=ORACLE
-BONITA_USER_BI/server=None
-BONITA_USER_BI/database=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=exa01-scan.br1.ocm.s7060035.oraclecloudatcustomer.com)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=boniprd.br1.ocm.s7060035.oraclecloudatcustomer.com)))
-BONITA_USER_BI/port=-1
+BONITA_USER_BI/type=javax.sql.DataSource
+BONITA_USER_BI/driver=oracle.jdbc.OracleDriver
+BONITA_USER_BI/url=jdbc:oracle:thin:@:-1:(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=exa01-scan.br1.ocm.s7060035.oraclecloudatcustomer.com)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=boniprd.br1.ocm.s7060035.oraclecloudatcustomer.com)))
 BONITA_USER_BI/user=user_bi
 BONITA_USER_BI/password=Encrypted 2be98dabb0fd5ad86a21ba74fcb81aac8
 
-BPMODTEMPO/name=BPMODTEMPO
-BPMODTEMPO/type=MSSQL
-BPMODTEMPO/server=10.5.5.100
-BPMODTEMPO/database=BPMODTEMPO
-BPMODTEMPO/port=1433
+BPMODTEMPO/type=javax.sql.DataSource
+BPMODTEMPO/driver=com.microsoft.sqlserver.jdbc.SQLServerDriver
+BPMODTEMPO/url=jdbc:sqlserver://10.5.5.100:1433;databasename=BPMODTEMPO;integratedsecurity=true
 BPMODTEMPO/user=sa
 BPMODTEMPO/password=Encrypted 2be98afc86aa7f2e4cb79ff228dc6fa8c
 
-Bilhetes_Telecon/name=Bilhetes_Telecon
-Bilhetes_Telecon/type=MSSQL
-Bilhetes_Telecon/server=10.2.0.170
-Bilhetes_Telecon/database=Bilhetes_Telecon
-Bilhetes_Telecon/port=1433
+Bilhetes_Telecon/type=javax.sql.DataSource
+Bilhetes_Telecon/driver=com.microsoft.sqlserver.jdbc.SQLServerDriver
+Bilhetes_Telecon/url=jdbc:sqlserver://10.2.0.170:1433;databasename=Bilhetes_Telecon;integratedsecurity=true
 Bilhetes_Telecon/user=processamento
 Bilhetes_Telecon/password=Encrypted 2be98afc86aa7f2e4cb18ac7e8bc1f682
 
-CALLBYCALL/name=CALLBYCALL
-CALLBYCALL/type=MSSQLNATIVE
-CALLBYCALL/server=10.2.0.38
-CALLBYCALL/database=cms
-CALLBYCALL/port=1433
+CALLBYCALL/type=javax.sql.DataSource
+CALLBYCALL/driver=com.microsoft.sqlserver.jdbc.SQLServerDriver
+CALLBYCALL/url=jdbc:sqlserver://10.2.0.38:1433;databasename=cms;integratedsecurity=true
 CALLBYCALL/user=sa
 CALLBYCALL/password=Encrypted 2be98afc86aa7f2e4cb1aa17cdb86a0c8
 
-CALL_BY_CALL/name=CALL_BY_CALL
-CALL_BY_CALL/type=MSSQL
-CALL_BY_CALL/server=10.2.0.38
-CALL_BY_CALL/database=cms
-CALL_BY_CALL/port=1433
+CALL_BY_CALL/type=javax.sql.DataSource
+CALL_BY_CALL/driver=com.microsoft.sqlserver.jdbc.SQLServerDriver
+CALL_BY_CALL/url=jdbc:sqlserver://10.2.0.38:1433;databasename=cms;integratedsecurity=true
 CALL_BY_CALL/user=sa
 CALL_BY_CALL/password=Encrypted 2be98afc86aa7f2e4cb1aa17cdb86a0c8
 
-DM_CALLBYCALL/name=DM_CALLBYCALL
-DM_CALLBYCALL/type=MSSQLNATIVE
-DM_CALLBYCALL/server=10.2.0.203
-DM_CALLBYCALL/database=DM_CALLBYCALL
-DM_CALLBYCALL/port=1433
+DM_CALLBYCALL/type=javax.sql.DataSource
+DM_CALLBYCALL/driver=com.microsoft.sqlserver.jdbc.SQLServerDriver
+DM_CALLBYCALL/url=jdbc:sqlserver://10.2.0.203:1433;databasename=DM_CALLBYCALL;integratedsecurity=true
 DM_CALLBYCALL/user=sa
 DM_CALLBYCALL/password=Encrypted 2be98afc86aa7f2e49809b97f8cc7ff99
 
-DW MIS MODELAGEM/name=DW MIS MODELAGEM
-DW MIS MODELAGEM/type=MSSQL
-DW MIS MODELAGEM/server=10.2.0.63
-DW MIS MODELAGEM/database=MISTEMPO01
-DW MIS MODELAGEM/port=1433
+DW MIS MODELAGEM/type=javax.sql.DataSource
+DW MIS MODELAGEM/driver=com.microsoft.sqlserver.jdbc.SQLServerDriver
+DW MIS MODELAGEM/url=jdbc:sqlserver://10.2.0.63:1433;databasename=MISTEMPO01;integratedsecurity=true
 DW MIS MODELAGEM/user=claudio.cardoso
 DW MIS MODELAGEM/password=Encrypted 2be98afc86aa7f2e48818ff228dc6fa8c
 
-DW_BI/name=DW_BI
-DW_BI/type=ORACLE
-DW_BI/server=10.85.10.42
-DW_BI/database=BIPRD
-DW_BI/port=1580
+DW_BI/type=javax.sql.DataSource
+DW_BI/driver=oracle.jdbc.OracleDriver
+DW_BI/url=jdbc:oracle:thin:@10.85.10.42:1580:BIPRD
 DW_BI/user=biprd
 DW_BI/password=Encrypted 2be98afc86ac59b94b91d9160cc96add3
 
-EXA_SAPRD/name=EXA_SAPRD
-EXA_SAPRD/type=ORACLE
-EXA_SAPRD/server=exa01-scan.br1.ocm.s7060035.oraclecloudatcustomer.com
-EXA_SAPRD/database=biprd
-EXA_SAPRD/port=1521
+EXA_SAPRD/type=javax.sql.DataSource
+EXA_SAPRD/driver=oracle.jdbc.OracleDriver
+EXA_SAPRD/url=jdbc:oracle:thin:@exa01-scan.br1.ocm.s7060035.oraclecloudatcustomer.com:1521:biprd
 EXA_SAPRD/user=saprd
 EXA_SAPRD/password=Encrypted 2be98afc86ad49394b91d9160cc96bcdb
 
-EXA_SAPRD_HML/name=EXA_SAPRD_HML
-EXA_SAPRD_HML/type=ORACLE
-EXA_SAPRD_HML/server=None
-EXA_SAPRD_HML/database=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=exa01-scan.br1.ocm.s7060035.oraclecloudatcustomer.com)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=bihml.br1.ocm.s7060035.oraclecloudatcustomer.com)))
-EXA_SAPRD_HML/port=-1
+EXA_SAPRD_HML/type=javax.sql.DataSource
+EXA_SAPRD_HML/driver=oracle.jdbc.OracleDriver
+EXA_SAPRD_HML/url=jdbc:oracle:thin:@:-1:(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=exa01-scan.br1.ocm.s7060035.oraclecloudatcustomer.com)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=bihml.br1.ocm.s7060035.oraclecloudatcustomer.com)))
 EXA_SAPRD_HML/user=saprd
 EXA_SAPRD_HML/password=Encrypted 2be98afc86aa7f297aa09bc74e19aa2d6
 
-EXCELLER/name=EXCELLER
-EXCELLER/type=MSSQL
-EXCELLER/server=10.2.0.170
-EXCELLER/database=ExcellerWeb
-EXCELLER/port=1433
+EXCELLER/type=javax.sql.DataSource
+EXCELLER/driver=com.microsoft.sqlserver.jdbc.SQLServerDriver
+EXCELLER/url=jdbc:sqlserver://10.2.0.170:1433;databasename=ExcellerWeb;integratedsecurity=true
 EXCELLER/user=exceller
 EXCELLER/password=Encrypted 2be98afc86aa7f2e4b91ca27cdb91b7df
 
-GRIDASSIST2/name=GRIDASSIST2
-GRIDASSIST2/type=ORACLE
-GRIDASSIST2/server=racassist-scan.tempopar.intranet
-GRIDASSIST2/database=juvoprd3
-GRIDASSIST2/port=1521
+GRIDASSIST2/type=javax.sql.DataSource
+GRIDASSIST2/driver=oracle.jdbc.OracleDriver
+GRIDASSIST2/url=jdbc:oracle:thin:@racassist-scan.tempopar.intranet:1521:juvoprd3
 GRIDASSIST2/user=extracao
 GRIDASSIST2/password=Encrypted 2be98afc86aa7f2e4ae01ba62df91aed5
 
-GRIDBHML_SAUDE/name=GRIDBHML_SAUDE
-GRIDBHML_SAUDE/type=ORACLE
-GRIDBHML_SAUDE/server=10.2.0.100
-GRIDBHML_SAUDE/database=griddb
-GRIDBHML_SAUDE/port=1521
+GRIDBHML_SAUDE/type=javax.sql.DataSource
+GRIDBHML_SAUDE/driver=oracle.jdbc.OracleDriver
+GRIDBHML_SAUDE/url=jdbc:oracle:thin:@10.2.0.100:1521:griddb
 GRIDBHML_SAUDE/user=processamento
 GRIDBHML_SAUDE/password=Encrypted 2be98afc86aa7f2e4cb18ac7e8bc1f682
 
-GRIDDBDEV/name=GRIDDBDEV
-GRIDDBDEV/type=ORACLE
-GRIDDBDEV/server=10.2.0.103
-GRIDDBDEV/database=griddb
-GRIDDBDEV/port=1521
+GRIDDBDEV/type=javax.sql.DataSource
+GRIDDBDEV/driver=oracle.jdbc.OracleDriver
+GRIDDBDEV/url=jdbc:oracle:thin:@10.2.0.103:1521:griddb
 GRIDDBDEV/user=FIOSAUDE
 GRIDDBDEV/password=Encrypted 2be98afc82ceebdb78a2c8a55e1b68aec
 
-GRIDDBHML/name=GRIDDBHML
-GRIDDBHML/type=ORACLE
-GRIDDBHML/server=10.2.0.100
-GRIDDBHML/database=GRIDHML
-GRIDDBHML/port=1521
+GRIDDBHML/type=javax.sql.DataSource
+GRIDDBHML/driver=oracle.jdbc.OracleDriver
+GRIDDBHML/url=jdbc:oracle:thin:@10.2.0.100:1521:GRIDHML
 GRIDDBHML/user=SABESPREV
 GRIDDBHML/password=Encrypted 2be98af9b2be5b7b79b2b8b46e1ba82f6
 
-GRIDSAUDE3/name=GRIDSAUDE3
-GRIDSAUDE3/type=ORACLE
-GRIDSAUDE3/server=10.79.10.60
-GRIDSAUDE3/database=griddb3
-GRIDSAUDE3/port=14260
+GRIDSAUDE3/type=javax.sql.DataSource
+GRIDSAUDE3/driver=oracle.jdbc.OracleDriver
+GRIDSAUDE3/url=jdbc:oracle:thin:@10.79.10.60:14260:griddb3
 GRIDSAUDE3/user=processamento
 GRIDSAUDE3/password=Encrypted 2be98afc86aa7f2e4cb18ac7e8bc1f682
 
-HML_SGTELE/name=HML_SGTELE
-HML_SGTELE/type=MYSQL
-HML_SGTELE/server=10.22.50.138
-HML_SGTELE/database=prodsgtele
-HML_SGTELE/port=3306
+HML_SGTELE/type=javax.sql.DataSource
+HML_SGTELE/driver=com.mysql.jdbc.Driver
+HML_SGTELE/url=jdbc:mysql:// 10.22.50.138/foodmart?useCursorFetch=true
 HML_SGTELE/user=fabiano
 HML_SGTELE/password=Encrypted 2be98afc86aa7f2b0ae14be7ffec3fd89
 
-INFORMIX_AVAYA_CONTINGENCIA/name=INFORMIX_AVAYA_CONTINGENCIA
-INFORMIX_AVAYA_CONTINGENCIA/type=INFORMIX
-INFORMIX_AVAYA_CONTINGENCIA/server=10.22.50.18
-INFORMIX_AVAYA_CONTINGENCIA/database=cms
-INFORMIX_AVAYA_CONTINGENCIA/port=50000
+INFORMIX_AVAYA_CONTINGENCIA/type=javax.sql.DataSource
+INFORMIX_AVAYA_CONTINGENCIA/driver=com.informix.jdbc.IfxDriver
+INFORMIX_AVAYA_CONTINGENCIA/url=jdbc:bea:informix://10.22.50.18:50000/cms
 INFORMIX_AVAYA_CONTINGENCIA/user=controlm
 INFORMIX_AVAYA_CONTINGENCIA/password=Encrypted 2be98afc86aa7f2e4cb1aa27687c0fb88
 
-INFORMIX_TELECOM_AVAYA/name=INFORMIX_TELECOM_AVAYA
-INFORMIX_TELECOM_AVAYA/type=INFORMIX
-INFORMIX_TELECOM_AVAYA/server=10.22.50.18
-INFORMIX_TELECOM_AVAYA/database=cms
-INFORMIX_TELECOM_AVAYA/port=50000
+INFORMIX_TELECOM_AVAYA/type=javax.sql.DataSource
+INFORMIX_TELECOM_AVAYA/driver=com.informix.jdbc.IfxDriver
+INFORMIX_TELECOM_AVAYA/url=jdbc:bea:informix://10.22.50.18:50000/cms
 INFORMIX_TELECOM_AVAYA/user=controlm
 INFORMIX_TELECOM_AVAYA/password=Encrypted 2be98afc86aa7f2e4cb1aa27687c0fb88
 
-INTSAP/name=INTSAP
-INTSAP/type=ORACLE
-INTSAP/server=10.86.10.40
-INTSAP/database=intsap1
-INTSAP/port=1550
+INTSAP/type=javax.sql.DataSource
+INTSAP/driver=oracle.jdbc.OracleDriver
+INTSAP/url=jdbc:oracle:thin:@10.86.10.40:1550:intsap1
 INTSAP/user=user_bi
 INTSAP/password=Encrypted 2be98afc86aa7f2e4cb18ac7e8bc1f682
 
-JUVOAUD/name=JUVOAUD
-JUVOAUD/type=ORACLE
-JUVOAUD/server=10.2.0.100
-JUVOAUD/database=juvoaud
-JUVOAUD/port=1530
+JUVOAUD/type=javax.sql.DataSource
+JUVOAUD/driver=oracle.jdbc.OracleDriver
+JUVOAUD/url=jdbc:oracle:thin:@10.2.0.100:1530:juvoaud
 JUVOAUD/user=PROCESSAMENTO
 JUVOAUD/password=Encrypted 2be98afc86aa7f2e4cb18ac7e8bc1f682
 
-JUVODEV/name=JUVODEV
-JUVODEV/type=ORACLE
-JUVODEV/server=None
-JUVODEV/database=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=exa01-scan.br1.ocm.s7060035.oraclecloudatcustomer.com)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=juvodev.br1.ocm.s7060035.oraclecloudatcustomer.com)))
-JUVODEV/port=-1
+JUVODEV/type=javax.sql.DataSource
+JUVODEV/driver=oracle.jdbc.OracleDriver
+JUVODEV/url=jdbc:oracle:thin:@:-1:(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=exa01-scan.br1.ocm.s7060035.oraclecloudatcustomer.com)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=juvodev.br1.ocm.s7060035.oraclecloudatcustomer.com)))
 JUVODEV/user=processamento
 JUVODEV/password=Encrypted 2be98afc86aa7f2e4cb18ac7e8bc1f682
 
-JUVOHML/name=JUVOHML
-JUVOHML/type=ORACLE
-JUVOHML/server=None
-JUVOHML/database=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=exa01-scan.br1.ocm.s7060035.oraclecloudatcustomer.com)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=JUVOHML.br1.ocm.s7060035.oraclecloudatcustomer.com)))
-JUVOHML/port=-1
+JUVOHML/type=javax.sql.DataSource
+JUVOHML/driver=oracle.jdbc.OracleDriver
+JUVOHML/url=jdbc:oracle:thin:@:-1:(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=exa01-scan.br1.ocm.s7060035.oraclecloudatcustomer.com)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=JUVOHML.br1.ocm.s7060035.oraclecloudatcustomer.com)))
 JUVOHML/user=processamento
 JUVOHML/password=Encrypted 2be98afc86aa7f2e4cb18ac7e8bc1f682
 
-JUVOHML01/name=JUVOHML01
-JUVOHML01/type=ORACLE
-JUVOHML01/server=None
-JUVOHML01/database=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=exa01-scan.br1.ocm.s7060035.oraclecloudatcustomer.com)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=JUVOAUD.br1.ocm.s7060035.oraclecloudatcustomer.com)))
-JUVOHML01/port=-1
+JUVOHML01/type=javax.sql.DataSource
+JUVOHML01/driver=oracle.jdbc.OracleDriver
+JUVOHML01/url=jdbc:oracle:thin:@:-1:(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=exa01-scan.br1.ocm.s7060035.oraclecloudatcustomer.com)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=JUVOAUD.br1.ocm.s7060035.oraclecloudatcustomer.com)))
 JUVOHML01/user=processamento
 JUVOHML01/password=Encrypted 2be98afc86aa7f2e4cb18ac7e8bc1f682
 
-JUVOHML01_01/name=JUVOHML01_01
-JUVOHML01_01/type=ORACLE
-JUVOHML01_01/server=None
-JUVOHML01_01/database=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=exa01-scan.br1.ocm.s7060035.oraclecloudatcustomer.com)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=JUVOAUD.br1.ocm.s7060035.oraclecloudatcustomer.com)))
-JUVOHML01_01/port=-1
+JUVOHML01_01/type=javax.sql.DataSource
+JUVOHML01_01/driver=oracle.jdbc.OracleDriver
+JUVOHML01_01/url=jdbc:oracle:thin:@:-1:(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=exa01-scan.br1.ocm.s7060035.oraclecloudatcustomer.com)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=JUVOAUD.br1.ocm.s7060035.oraclecloudatcustomer.com)))
 JUVOHML01_01/user=processamento
 JUVOHML01_01/password=Encrypted 2be98afc86aa7f2e4cb18ac7e8bc1f682
 
-JUVOHOMO/name=JUVOHOMO
-JUVOHOMO/type=ORACLE
-JUVOHOMO/server=10.2.0.100
-JUVOHOMO/database=juvoprd
-JUVOHOMO/port=1521
+JUVOHOMO/type=javax.sql.DataSource
+JUVOHOMO/driver=oracle.jdbc.OracleDriver
+JUVOHOMO/url=jdbc:oracle:thin:@10.2.0.100:1521:juvoprd
 JUVOHOMO/user=processamento
 JUVOHOMO/password=Encrypted 2be98afc86aa7f2e4cb18ac7e8bc1f682
 
-JUVOMMS/name=JUVOMMS
-JUVOMMS/type=ORACLE
-JUVOMMS/server=None
-JUVOMMS/database=(DESCRIPTION = (ADDRESS_LIST = (ADDRESS = (PROTOCOL = TCP)(HOST = exa01-scan.br1.ocm.s7060035.oraclecloudatcustomer.com)(PORT = 1521))) (CONNECT_DATA = (SERVER = DEDICATED) (SERVICE_NAME = juvomms.br1.ocm.s7060035.oraclecloudatcustomer.com)))
-JUVOMMS/port=-1
+JUVOMMS/type=javax.sql.DataSource
+JUVOMMS/driver=oracle.jdbc.OracleDriver
+JUVOMMS/url=jdbc:oracle:thin:@:-1:(DESCRIPTION = (ADDRESS_LIST = (ADDRESS = (PROTOCOL = TCP)(HOST = exa01-scan.br1.ocm.s7060035.oraclecloudatcustomer.com)(PORT = 1521))) (CONNECT_DATA = (SERVER = DEDICATED) (SERVICE_NAME = juvomms.br1.ocm.s7060035.oraclecloudatcustomer.com)))
 JUVOMMS/user=processamento
 JUVOMMS/password=Encrypted 2be98afc86aa7f2e4cb18ac7e8bc1f682
 
-JUVOPRODUCAO/name=JUVOPRODUCAO
-JUVOPRODUCAO/type=ORACLE
-JUVOPRODUCAO/server=racassist-scan.tempopar.intranet
-JUVOPRODUCAO/database=juvoprd3
-JUVOPRODUCAO/port=1521
+JUVOPRODUCAO/type=javax.sql.DataSource
+JUVOPRODUCAO/driver=oracle.jdbc.OracleDriver
+JUVOPRODUCAO/url=jdbc:oracle:thin:@racassist-scan.tempopar.intranet:1521:juvoprd3
 JUVOPRODUCAO/user=processamento
 JUVOPRODUCAO/password=Encrypted 2be98afc86aa7f2e4cb18ac7e8bc1f682
 
-JUVOQA_PROCESSAMENTO/name=JUVOQA_PROCESSAMENTO
-JUVOQA_PROCESSAMENTO/type=ORACLE
-JUVOQA_PROCESSAMENTO/server=None
-JUVOQA_PROCESSAMENTO/database=(DESCRIPTION = (ADDRESS_LIST = (ADDRESS = (PROTOCOL = TCP)(HOST = exa01-scan.br1.ocm.s7060035.oraclecloudatcustomer.com)(PORT = 1521))) (CONNECT_DATA = (SERVER = DEDICATED) (SERVICE_NAME = juvohml.br1.ocm.s7060035.oraclecloudatcustomer.com)))
-JUVOQA_PROCESSAMENTO/port=-1
+JUVOQA_PROCESSAMENTO/type=javax.sql.DataSource
+JUVOQA_PROCESSAMENTO/driver=oracle.jdbc.OracleDriver
+JUVOQA_PROCESSAMENTO/url=jdbc:oracle:thin:@:-1:(DESCRIPTION = (ADDRESS_LIST = (ADDRESS = (PROTOCOL = TCP)(HOST = exa01-scan.br1.ocm.s7060035.oraclecloudatcustomer.com)(PORT = 1521))) (CONNECT_DATA = (SERVER = DEDICATED) (SERVICE_NAME = juvohml.br1.ocm.s7060035.oraclecloudatcustomer.com)))
 JUVOQA_PROCESSAMENTO/user=processamento
 JUVOQA_PROCESSAMENTO/password=Encrypted 2be98afc86aa7f2e4cb18ac7e8bc1f682
 
-JUVO_EXTRACAO/name=JUVO_EXTRACAO
-JUVO_EXTRACAO/type=ORACLE
-JUVO_EXTRACAO/server=racassist-scan.tempopar.intranet
-JUVO_EXTRACAO/database=juvoprd3
-JUVO_EXTRACAO/port=1521
+JUVO_EXTRACAO/type=javax.sql.DataSource
+JUVO_EXTRACAO/driver=oracle.jdbc.OracleDriver
+JUVO_EXTRACAO/url=jdbc:oracle:thin:@racassist-scan.tempopar.intranet:1521:juvoprd3
 JUVO_EXTRACAO/user=processamento
 JUVO_EXTRACAO/password=Encrypted 2be98afc86aa7f2e4cb18ac7e8bc1f682
 
-Jira Producao/name=Jira Producao
-Jira Producao/type=ORACLE
-Jira Producao/server=None
-Jira Producao/database=JIRAPRD
-Jira Producao/port=-1
+Jira Producao/type=javax.sql.DataSource
+Jira Producao/driver=oracle.jdbc.OracleDriver
+Jira Producao/url=jdbc:oracle:thin:@:-1:JIRAPRD
 Jira Producao/user=user_bi
 Jira Producao/password=Encrypted 2be98dabb0fd5ad86a21ba74fcb81aac8
 
-JuvoD1_Processamento/name=JuvoD1_Processamento
-JuvoD1_Processamento/type=ORACLE
-JuvoD1_Processamento/server=192.168.16.21
-JuvoD1_Processamento/database=juvoprd
-JuvoD1_Processamento/port=1522
+JuvoD1_Processamento/type=javax.sql.DataSource
+JuvoD1_Processamento/driver=oracle.jdbc.OracleDriver
+JuvoD1_Processamento/url=jdbc:oracle:thin:@192.168.16.21:1522:juvoprd
 JuvoD1_Processamento/user=processamento
 JuvoD1_Processamento/password=Encrypted 2be98afc86aa7f2e4cb18ac7e8bc1f682
 
-Juvo_User_bi/name=Juvo_User_bi
-Juvo_User_bi/type=ORACLE
-Juvo_User_bi/server=10.85.10.60
-Juvo_User_bi/database=juvoprd2
-Juvo_User_bi/port=1521
+Juvo_User_bi/type=javax.sql.DataSource
+Juvo_User_bi/driver=oracle.jdbc.OracleDriver
+Juvo_User_bi/url=jdbc:oracle:thin:@10.85.10.60:1521:juvoprd2
 Juvo_User_bi/user=user_bi
 Juvo_User_bi/password=Encrypted 2be98fabb0fd5ad86a21ba74fcb81aac8
 
-Juvod1_User_BI/name=Juvod1_User_BI
-Juvod1_User_BI/type=ORACLE
-Juvod1_User_BI/server=192.168.16.21
-Juvod1_User_BI/database=juvoprd
-Juvod1_User_BI/port=1522
+Juvod1_User_BI/type=javax.sql.DataSource
+Juvod1_User_BI/driver=oracle.jdbc.OracleDriver
+Juvod1_User_BI/url=jdbc:oracle:thin:@192.168.16.21:1522:juvoprd
 Juvod1_User_BI/user=user_bi
 Juvod1_User_BI/password=Encrypted 2be98dabb0fd5ad86a21ba74fcb81aac8
 
-KETTLE_TELECOM/name=KETTLE_TELECOM
-KETTLE_TELECOM/type=POSTGRESQL
-KETTLE_TELECOM/server=10.2.0.203
-KETTLE_TELECOM/database=KETTLE_TELECOM
-KETTLE_TELECOM/port=5432
+KETTLE_TELECOM/type=javax.sql.DataSource
+KETTLE_TELECOM/driver=org.postgresql.Driver
+KETTLE_TELECOM/url=jdbc:postgresql://10.2.0.203:5432/hibernate?searchpath=KETTLE_TELECOM
 KETTLE_TELECOM/user=KETTLE_TELECOM
 KETTLE_TELECOM/password=Encrypted 2be98e48d3ef3bea1942d8b5cfbb180f7
 
-Logging/name=Logging
-Logging/type=H2
-Logging/server=None
-Logging/database=LOGGING
-Logging/port=-1
+Logging/type=javax.sql.DataSource
+Logging/driver=org.h2.Driver
+Logging/url=jdbc:h2:file:/LOGGING;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
 Logging/user=None
 Logging/password=Encrypted
 
-LucidDB/name=LucidDB
-LucidDB/type=LucidDB
-LucidDB/server=127.0.0.1
-LucidDB/database=nimbuzz
-LucidDB/port=8034
+LucidDB/type=javax.sql.DataSource
+LucidDB/driver=org.luciddb.jdbc.LucidDbClientDriver
+LucidDB/url=jdbc:luciddb:127.0.0.1:8034;schema=nimbuzz
 LucidDB/user=MATT
 LucidDB/password=Encrypted 2be98afc86aa7f2e4cb79ce10df90acde
 
-MYSQL LOCAL/name=MYSQL LOCAL
-MYSQL LOCAL/type=MYSQL
-MYSQL LOCAL/server=localhost
-MYSQL LOCAL/database=ocecdb
-MYSQL LOCAL/port=3306
+MYSQL LOCAL/type=javax.sql.DataSource
+MYSQL LOCAL/driver=com.mysql.jdbc.Driver
+MYSQL LOCAL/url=jdbc:mysql:// localhost/foodmart?useCursorFetch=true
 MYSQL LOCAL/user=ocec
 MYSQL LOCAL/password=Encrypted 2be98afc86aa7f2e4cb79ce10d191aad9
 
-MYSQL-LOCAL/name=MYSQL-LOCAL
-MYSQL-LOCAL/type=MYSQL
-MYSQL-LOCAL/server=localhost
-MYSQL-LOCAL/database=tempo
-MYSQL-LOCAL/port=3306
+MYSQL-LOCAL/type=javax.sql.DataSource
+MYSQL-LOCAL/driver=com.mysql.jdbc.Driver
+MYSQL-LOCAL/url=jdbc:mysql:// localhost/foodmart?useCursorFetch=true
 MYSQL-LOCAL/user=root
 MYSQL-LOCAL/password=Encrypted
 
-MYSQL_VDN_DESENV/name=MYSQL_VDN_DESENV
-MYSQL_VDN_DESENV/type=MYSQL
-MYSQL_VDN_DESENV/server=10.22.50.138
-MYSQL_VDN_DESENV/database=dbtelefoniabi
-MYSQL_VDN_DESENV/port=3306
+MYSQL_VDN_DESENV/type=javax.sql.DataSource
+MYSQL_VDN_DESENV/driver=com.mysql.jdbc.Driver
+MYSQL_VDN_DESENV/url=jdbc:mysql:// 10.22.50.138/foodmart?useCursorFetch=true
 MYSQL_VDN_DESENV/user=usrbihml
 MYSQL_VDN_DESENV/password=Encrypted 2be98afc86aa7f2e4be0abc72d79aa2d6
 
-MYSQL_VDN_HOMOL/name=MYSQL_VDN_HOMOL
-MYSQL_VDN_HOMOL/type=MYSQL
-MYSQL_VDN_HOMOL/server=10.2.0.88
-MYSQL_VDN_HOMOL/database=dbtelefonia
-MYSQL_VDN_HOMOL/port=3306
+MYSQL_VDN_HOMOL/type=javax.sql.DataSource
+MYSQL_VDN_HOMOL/driver=com.mysql.jdbc.Driver
+MYSQL_VDN_HOMOL/url=jdbc:mysql:// 10.2.0.88/foodmart?useCursorFetch=true
 MYSQL_VDN_HOMOL/user=dbtelefonia
 MYSQL_VDN_HOMOL/password=Encrypted 3072dbf683ac08d39788ae1fa17ed793e194
 
-MYSQL_VDN_HOMOLOG/name=MYSQL_VDN_HOMOLOG
-MYSQL_VDN_HOMOLOG/type=MYSQL
-MYSQL_VDN_HOMOLOG/server=10.22.50.138
-MYSQL_VDN_HOMOLOG/database=dbtelefoniabi
-MYSQL_VDN_HOMOLOG/port=3306
+MYSQL_VDN_HOMOLOG/type=javax.sql.DataSource
+MYSQL_VDN_HOMOLOG/driver=com.mysql.jdbc.Driver
+MYSQL_VDN_HOMOLOG/url=jdbc:mysql:// 10.22.50.138/foodmart?useCursorFetch=true
 MYSQL_VDN_HOMOLOG/user=felipe.loris
 MYSQL_VDN_HOMOLOG/password=Encrypted 2be98afc86aa7a681a609a1508fc7ff89
 
-MYSQL_VDN_PROD/name=MYSQL_VDN_PROD
-MYSQL_VDN_PROD/type=MYSQL
-MYSQL_VDN_PROD/server=10.2.0.88
-MYSQL_VDN_PROD/database=dbtelefoniabi
-MYSQL_VDN_PROD/port=3306
+MYSQL_VDN_PROD/type=javax.sql.DataSource
+MYSQL_VDN_PROD/driver=com.mysql.jdbc.Driver
+MYSQL_VDN_PROD/url=jdbc:mysql:// 10.2.0.88/foodmart?useCursorFetch=true
 MYSQL_VDN_PROD/user=dbtelefoniabi
 MYSQL_VDN_PROD/password=Encrypted 2be98afc85ad7978ae71dac64db9ee194
 
-MySQL/name=MySQL
-MySQL/type=MYSQL
-MySQL/server=localhost
-MySQL/database=test
-MySQL/port=3306
+MySQL/type=javax.sql.DataSource
+MySQL/driver=com.mysql.jdbc.Driver
+MySQL/url=jdbc:mysql:// localhost/foodmart?useCursorFetch=true
 MySQL/user=matt
 MySQL/password=Encrypted 2be98afc86aa7f2e4cb79ce10df90acde
 
-Mysql Telefonia/name=Mysql Telefonia
-Mysql Telefonia/type=MYSQL
-Mysql Telefonia/server=10.14.0.193
-Mysql Telefonia/database=prodsgtele
-Mysql Telefonia/port=3306
+Mysql Telefonia/type=javax.sql.DataSource
+Mysql Telefonia/driver=com.mysql.jdbc.Driver
+Mysql Telefonia/url=jdbc:mysql:// 10.14.0.193/foodmart?useCursorFetch=true
 Mysql Telefonia/user=marco.pereira
 Mysql Telefonia/password=Encrypted 2be98afc827e78087fb39ff238ac7fc8c
 
-Nimbuzz/name=Nimbuzz
-Nimbuzz/type=MYSQL
-Nimbuzz/server=localhost
-Nimbuzz/database=nimbuzz
-Nimbuzz/port=3306
+Nimbuzz/type=javax.sql.DataSource
+Nimbuzz/driver=com.mysql.jdbc.Driver
+Nimbuzz/url=jdbc:mysql:// localhost/foodmart?useCursorFetch=true
 Nimbuzz/user=matt
 Nimbuzz/password=Encrypted 2be98afc86aa7f2e4cb79ce10df90acde
 
-ODONTDEV/name=ODONTDEV
-ODONTDEV/type=ORACLE
-ODONTDEV/server=10.2.0.100
-ODONTDEV/database=ODONTDEV
-ODONTDEV/port=1521
+ODONTDEV/type=javax.sql.DataSource
+ODONTDEV/driver=oracle.jdbc.OracleDriver
+ODONTDEV/url=jdbc:oracle:thin:@10.2.0.100:1521:ODONTDEV
 ODONTDEV/user=processamento
 ODONTDEV/password=Encrypted 2be98afb818c89181b80aaf7ddb9cbbd5
 
-ODONTHML/name=ODONTHML
-ODONTHML/type=ORACLE
-ODONTHML/server=10.2.0.100
-ODONTHML/database=odonthml
-ODONTHML/port=1521
+ODONTHML/type=javax.sql.DataSource
+ODONTHML/driver=oracle.jdbc.OracleDriver
+ODONTHML/url=jdbc:oracle:thin:@10.2.0.100:1521:odonthml
 ODONTHML/user=processamento
 ODONTHML/password=Encrypted 2be98afb818c89181b80aaf7ddb9cbbd5
 
-ODONTPRD/name=ODONTPRD
-ODONTPRD/type=ORACLE
-ODONTPRD/server=10.79.10.50
-ODONTPRD/database=griddb1
-ODONTPRD/port=14260
+ODONTPRD/type=javax.sql.DataSource
+ODONTPRD/driver=oracle.jdbc.OracleDriver
+ODONTPRD/url=jdbc:oracle:thin:@10.79.10.50:14260:griddb1
 ODONTPRD/user=processamento
 ODONTPRD/password=Encrypted 2be98afc86aa7f2e4cb18ac7e8bc1f682
 
-ODS11g/name=ODS11g
-ODS11g/type=ORACLE
-ODS11g/server=10.85.10.42
-ODS11g/database=BIPRD
-ODS11g/port=1580
+ODS11g/type=javax.sql.DataSource
+ODS11g/driver=oracle.jdbc.OracleDriver
+ODS11g/url=jdbc:oracle:thin:@10.85.10.42:1580:BIPRD
 ODS11g/user=ods
 ODS11g/password=Encrypted 2be98afc86aa7f2e4cb79a174cdc3fedd
 
-OTRS_TELECOM_NEW/name=OTRS_TELECOM_NEW
-OTRS_TELECOM_NEW/type=MYSQL
-OTRS_TELECOM_NEW/server=10.2.0.15
-OTRS_TELECOM_NEW/database=otrsnew
-OTRS_TELECOM_NEW/port=3306
+OTRS_TELECOM_NEW/type=javax.sql.DataSource
+OTRS_TELECOM_NEW/driver=com.mysql.jdbc.Driver
+OTRS_TELECOM_NEW/url=jdbc:mysql:// 10.2.0.15/foodmart?useCursorFetch=true
 OTRS_TELECOM_NEW/user=fabiano.a
 OTRS_TELECOM_NEW/password=Encrypted 2be98afc86aa78681a609a1508fc0fc8e
 
-OdontoUtilis/name=OdontoUtilis
-OdontoUtilis/type=ORACLE
-OdontoUtilis/server=10.81.10.30
-OdontoUtilis/database=odontprd1
-OdontoUtilis/port=1521
+OdontoUtilis/type=javax.sql.DataSource
+OdontoUtilis/driver=oracle.jdbc.OracleDriver
+OdontoUtilis/url=jdbc:oracle:thin:@10.81.10.30:1521:odontprd1
 OdontoUtilis/user=user_bi
 OdontoUtilis/password=Encrypted 2be98afc86aa7f2e4bf1ca360d1c3fd89
 
-Oracle XE Localhost/name=Oracle XE Localhost
-Oracle XE Localhost/type=ORACLE
-Oracle XE Localhost/server=localhost
-Oracle XE Localhost/database=XE
-Oracle XE Localhost/port=1521
+Oracle XE Localhost/type=javax.sql.DataSource
+Oracle XE Localhost/driver=oracle.jdbc.OracleDriver
+Oracle XE Localhost/url=jdbc:oracle:thin:@localhost:1521:XE
 Oracle XE Localhost/user=matt
 Oracle XE Localhost/password=Encrypted 2be98afc86aa7f2e4cb79ce10df90acde
 
-P1/name=P1
-P1/type=ORACLE
-P1/server=10.79.10.50
-P1/database=griddb2
-P1/port=14260
+P1/type=javax.sql.DataSource
+P1/driver=oracle.jdbc.OracleDriver
+P1/url=jdbc:oracle:thin:@10.79.10.50:14260:griddb2
 P1/user=user_bi
 P1/password=Encrypted 2be98dabb0fd5ad86a21ba74fcb81aac8
 
-P1_DEV/name=P1_DEV
-P1_DEV/type=ORACLE
-P1_DEV/server=10.2.0.103
-P1_DEV/database=griddb
-P1_DEV/port=1521
+P1_DEV/type=javax.sql.DataSource
+P1_DEV/driver=oracle.jdbc.OracleDriver
+P1_DEV/url=jdbc:oracle:thin:@10.2.0.103:1521:griddb
 P1_DEV/user=vale
 P1_DEV/password=Encrypted 2be98afc86aa7f2e4bd18a275e196aacc
 
-P2/name=P2
-P2/type=ORACLE
-P2/server=10.79.10.60
-P2/database=griddb3
-P2/port=14260
+P2/type=javax.sql.DataSource
+P2/driver=oracle.jdbc.OracleDriver
+P2/url=jdbc:oracle:thin:@10.79.10.60:14260:griddb3
 P2/user=user_bi
 P2/password=Encrypted 2be98dabb0fd5ad86a21ba74feb81aac8
 
-P2HML/name=P2HML
-P2HML/type=ORACLE
-P2HML/server=10.2.0.100
-P2HML/database=GRIDDB
-P2HML/port=1521
+P2HML/type=javax.sql.DataSource
+P2HML/driver=oracle.jdbc.OracleDriver
+P2HML/url=jdbc:oracle:thin:@10.2.0.100:1521:GRIDDB
 P2HML/user=ccardoso
 P2HML/password=Encrypted 2be98afc86aa7f2e4bf1ca360d1c3fd89
 
-PI_HML_VALE/name=PI_HML_VALE
-PI_HML_VALE/type=ORACLE
-PI_HML_VALE/server=10.2.0.100
-PI_HML_VALE/database=griddb
-PI_HML_VALE/port=1521
+PI_HML_VALE/type=javax.sql.DataSource
+PI_HML_VALE/driver=oracle.jdbc.OracleDriver
+PI_HML_VALE/url=jdbc:oracle:thin:@10.2.0.100:1521:griddb
 PI_HML_VALE/user=vale
 PI_HML_VALE/password=Encrypted 2be98afc86aa7f2e4bd18a275e19aa2d6
 
-POSTGRESQL LOCAL/name=POSTGRESQL LOCAL
-POSTGRESQL LOCAL/type=POSTGRESQL
-POSTGRESQL LOCAL/server=localhost
-POSTGRESQL LOCAL/database=ocec_apo
-POSTGRESQL LOCAL/port=5432
+POSTGRESQL LOCAL/type=javax.sql.DataSource
+POSTGRESQL LOCAL/driver=org.postgresql.Driver
+POSTGRESQL LOCAL/url=jdbc:postgresql://localhost:5432/hibernate?searchpath=ocec_apo
 POSTGRESQL LOCAL/user=ocecuser
 POSTGRESQL LOCAL/password=Encrypted 2be98afc86aa7f2e4cb79ce10d191aad9
 
-PREVDONTO/name=PREVDONTO
-PREVDONTO/type=ORACLE
-PREVDONTO/server=10.2.0.100
-PREVDONTO/database=odontpro
-PREVDONTO/port=1521
+PREVDONTO/type=javax.sql.DataSource
+PREVDONTO/driver=oracle.jdbc.OracleDriver
+PREVDONTO/url=jdbc:oracle:thin:@10.2.0.100:1521:odontpro
 PREVDONTO/user=processamento
 PREVDONTO/password=Encrypted 2be98afb818c89181b80aaf7ddb9cbbd5
 
-PROCESSAMENTO/name=PROCESSAMENTO
-PROCESSAMENTO/type=ORACLE
-PROCESSAMENTO/server=10.2.0.226
-PROCESSAMENTO/database=BIPRD
-PROCESSAMENTO/port=1580
+PROCESSAMENTO/type=javax.sql.DataSource
+PROCESSAMENTO/driver=oracle.jdbc.OracleDriver
+PROCESSAMENTO/url=jdbc:oracle:thin:@10.2.0.226:1580:BIPRD
 PROCESSAMENTO/user=processamento
 PROCESSAMENTO/password=Encrypted 2be98afc86aa7f2e4cb18ac7e8bc1f682
 
-Pentaho Steel Wheels HSQL/name=Pentaho Steel Wheels HSQL
-Pentaho Steel Wheels HSQL/type=HYPERSONIC
-Pentaho Steel Wheels HSQL/server=localhost
-Pentaho Steel Wheels HSQL/database=sampledata
-Pentaho Steel Wheels HSQL/port=1521
+Pentaho Steel Wheels HSQL/type=javax.sql.DataSource
+Pentaho Steel Wheels HSQL/driver=org.hsqldb.jdbcDriver
+Pentaho Steel Wheels HSQL/url=jdbc:hsqldb:localhost/sampledata
 Pentaho Steel Wheels HSQL/user=None
 Pentaho Steel Wheels HSQL/password=Encrypted
 
-QUALITY - BPMAINDB/name=QUALITY - BPMAINDB
-QUALITY - BPMAINDB/type=MSSQL
-QUALITY - BPMAINDB/server=10.22.50.66
-QUALITY - BPMAINDB/database=BPMAINDB
-QUALITY - BPMAINDB/port=1433
+QUALITY - BPMAINDB/type=javax.sql.DataSource
+QUALITY - BPMAINDB/driver=com.microsoft.sqlserver.jdbc.SQLServerDriver
+QUALITY - BPMAINDB/url=jdbc:sqlserver://10.22.50.66:1433;databasename=BPMAINDB;integratedsecurity=true
 QUALITY - BPMAINDB/user=reports
 QUALITY - BPMAINDB/password=Encrypted 2be98afc86aa7f2b0ae14be7f8cc2fe8e
 
-QUALITY/name=QUALITY
-QUALITY/type=MSSQL
-QUALITY/server=10.22.50.66
-QUALITY/database=CentralDWH
-QUALITY/port=1433
+QUALITY/type=javax.sql.DataSource
+QUALITY/driver=com.microsoft.sqlserver.jdbc.SQLServerDriver
+QUALITY/url=jdbc:sqlserver://10.22.50.66:1433;databasename=CentralDWH;integratedsecurity=true
 QUALITY/user=reports
 QUALITY/password=Encrypted 2be98afc86aa7f2b0ae14be7f8cc2fe8e
 
-Rep_prodkettle/name=Rep_prodkettle
-Rep_prodkettle/type=ORACLE
-Rep_prodkettle/server=None
-Rep_prodkettle/database=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=exa01-scan.br1.ocm.s7060035.oraclecloudatcustomer.com)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=BIPRD.br1.ocm.s7060035.oraclecloudatcustomer.com)))
-Rep_prodkettle/port=-1
+Rep_prodkettle/type=javax.sql.DataSource
+Rep_prodkettle/driver=oracle.jdbc.OracleDriver
+Rep_prodkettle/url=jdbc:oracle:thin:@:-1:(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=exa01-scan.br1.ocm.s7060035.oraclecloudatcustomer.com)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=BIPRD.br1.ocm.s7060035.oraclecloudatcustomer.com)))
 Rep_prodkettle/user=prodkettle
 Rep_prodkettle/password=Encrypted 2be98afc86aa7f2e4bf1ca360d1c3fd89
 
-SAR10G/name=SAR10G
-SAR10G/type=ORACLE
-SAR10G/server=10.85.10.50
-SAR10G/database=sar2
-SAR10G/port=1522
+SAR10G/type=javax.sql.DataSource
+SAR10G/driver=oracle.jdbc.OracleDriver
+SAR10G/url=jdbc:oracle:thin:@10.85.10.50:1522:sar2
 SAR10G/user=USER_BI
 SAR10G/password=Encrypted 2be98fabb0fd5ad86a21ba74fcb81aac8
 
-SIRJ/name=SIRJ
-SIRJ/type=ORACLE
-SIRJ/server=10.85.10.20
-SIRJ/database=juvoprd3
-SIRJ/port=1521
+SIRJ/type=javax.sql.DataSource
+SIRJ/driver=oracle.jdbc.OracleDriver
+SIRJ/url=jdbc:oracle:thin:@10.85.10.20:1521:juvoprd3
 SIRJ/user=processamento
 SIRJ/password=Encrypted 2be98afc86aa7f2e4cb18ac7e8bc1f682
 
-SQL LOCAL/name=SQL LOCAL
-SQL LOCAL/type=MSSQL
-SQL LOCAL/server=localhost
-SQL LOCAL/database=uss
-SQL LOCAL/port=1433
+SQL LOCAL/type=javax.sql.DataSource
+SQL LOCAL/driver=com.microsoft.sqlserver.jdbc.SQLServerDriver
+SQL LOCAL/url=jdbc:sqlserver://localhost:1433;databasename=uss;integratedsecurity=true
 SQL LOCAL/user=sa
 SQL LOCAL/password=Encrypted 2be98afc86aa7f2e4bf1ca360d1c3fd89
 
-SQL Server 2005 Express in VMWare/name=SQL Server 2005 Express in VMWare
-SQL Server 2005 Express in VMWare/type=MSSQL
-SQL Server 2005 Express in VMWare/server=192.168.1.144
-SQL Server 2005 Express in VMWare/database=msdb
-SQL Server 2005 Express in VMWare/port=1513
+SQL Server 2005 Express in VMWare/type=javax.sql.DataSource
+SQL Server 2005 Express in VMWare/driver=com.microsoft.sqlserver.jdbc.SQLServerDriver
+SQL Server 2005 Express in VMWare/url=jdbc:sqlserver://192.168.1.144:1513;databasename=msdb;integratedsecurity=true
 SQL Server 2005 Express in VMWare/user=sa
 SQL Server 2005 Express in VMWare/password=Encrypted 2be98afc86aa7f2e4cb79ce10df90acde
 
-SQL_PROCESSOS_PLANEJAMENTO/name=SQL_PROCESSOS_PLANEJAMENTO
-SQL_PROCESSOS_PLANEJAMENTO/type=MSSQL
-SQL_PROCESSOS_PLANEJAMENTO/server=10.11.7.14
-SQL_PROCESSOS_PLANEJAMENTO/database=DWZ
-SQL_PROCESSOS_PLANEJAMENTO/port=1433
+SQL_PROCESSOS_PLANEJAMENTO/type=javax.sql.DataSource
+SQL_PROCESSOS_PLANEJAMENTO/driver=com.microsoft.sqlserver.jdbc.SQLServerDriver
+SQL_PROCESSOS_PLANEJAMENTO/url=jdbc:sqlserver://10.11.7.14:1433;databasename=DWZ;integratedsecurity=true
 SQL_PROCESSOS_PLANEJAMENTO/user=sa
 SQL_PROCESSOS_PLANEJAMENTO/password=Encrypted 2be98afc86aa7f2e4cb79ff228dc6fa8c
 
-SSD/name=SSD
-SSD/type=ORACLE
-SSD/server=None
-SSD/database=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=exa01-scan.br1.ocm.s7060035.oraclecloudatcustomer.com)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=BIPRD.br1.ocm.s7060035.oraclecloudatcustomer.com)))
-SSD/port=-1
+SSD/type=javax.sql.DataSource
+SSD/driver=oracle.jdbc.OracleDriver
+SSD/url=jdbc:oracle:thin:@:-1:(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=exa01-scan.br1.ocm.s7060035.oraclecloudatcustomer.com)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=BIPRD.br1.ocm.s7060035.oraclecloudatcustomer.com)))
 SSD/user=ssd
 SSD/password=Encrypted 2be98afc80d9fcb87bd0ea974cc98f9c9
 
-STAGE_AREA/name=STAGE_AREA
-STAGE_AREA/type=ORACLE
-STAGE_AREA/server=None
-STAGE_AREA/database=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=exa01-scan.br1.ocm.s7060035.oraclecloudatcustomer.com)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=BIPRD.br1.ocm.s7060035.oraclecloudatcustomer.com)))
-STAGE_AREA/port=-1
+STAGE_AREA/type=javax.sql.DataSource
+STAGE_AREA/driver=oracle.jdbc.OracleDriver
+STAGE_AREA/url=jdbc:oracle:thin:@:-1:(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=exa01-scan.br1.ocm.s7060035.oraclecloudatcustomer.com)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=BIPRD.br1.ocm.s7060035.oraclecloudatcustomer.com)))
 STAGE_AREA/user=SAPRD
 STAGE_AREA/password=Encrypted 2be98afc86ad49394b91d9160cc96bcdb
 
-STAGE_AREA11G/name=STAGE_AREA11G
-STAGE_AREA11G/type=ORACLE
-STAGE_AREA11G/server=10.85.10.42
-STAGE_AREA11G/database=BIPRD
-STAGE_AREA11G/port=1580
+STAGE_AREA11G/type=javax.sql.DataSource
+STAGE_AREA11G/driver=oracle.jdbc.OracleDriver
+STAGE_AREA11G/url=jdbc:oracle:thin:@10.85.10.42:1580:BIPRD
 STAGE_AREA11G/user=saprd
 STAGE_AREA11G/password=Encrypted 2be98afc86aa7f2e4b818be62dac3fedd
 
-STAGE_AREA_HML/name=STAGE_AREA_HML
-STAGE_AREA_HML/type=ORACLE
-STAGE_AREA_HML/server=10.2.0.100
-STAGE_AREA_HML/database=BIHML
-STAGE_AREA_HML/port=1521
+STAGE_AREA_HML/type=javax.sql.DataSource
+STAGE_AREA_HML/driver=oracle.jdbc.OracleDriver
+STAGE_AREA_HML/url=jdbc:oracle:thin:@10.2.0.100:1521:BIHML
 STAGE_AREA_HML/user=saprd
 STAGE_AREA_HML/password=Encrypted 2be98afc86aa7f297aa09bc74e19aa2d6
 
-SVSSPRD/name=SVSSPRD
-SVSSPRD/type=ORACLE
-SVSSPRD/server=10.86.10.50
-SVSSPRD/database=SVSSPRD3
-SVSSPRD/port=1523
+SVSSPRD/type=javax.sql.DataSource
+SVSSPRD/driver=oracle.jdbc.OracleDriver
+SVSSPRD/url=jdbc:oracle:thin:@10.86.10.50:1523:SVSSPRD3
 SVSSPRD/user=svss
 SVSSPRD/password=Encrypted 2be98afc86aa7f2e4cb1aa27687c0fb88
 
-Sa_Telecom_Local/name=Sa_Telecom_Local
-Sa_Telecom_Local/type=MSSQL
-Sa_Telecom_Local/server=None
-Sa_Telecom_Local/database=SA_TELECOM_HML
-Sa_Telecom_Local/port=1521
+Sa_Telecom_Local/type=javax.sql.DataSource
+Sa_Telecom_Local/driver=com.microsoft.sqlserver.jdbc.SQLServerDriver
+Sa_Telecom_Local/url=jdbc:sqlserver://:1521;databasename=SA_TELECOM_HML;integratedsecurity=true
 Sa_Telecom_Local/user=sa
 Sa_Telecom_Local/password=Encrypted 2be98afc86aa7f2e49809b97f8cc7ff99
 
-TARTEL/name=TARTEL
-TARTEL/type=MSSQLNATIVE
-TARTEL/server=10.5.5.225
-TARTEL/database=TARTEL
-TARTEL/port=1433
+TARTEL/type=javax.sql.DataSource
+TARTEL/driver=com.microsoft.sqlserver.jdbc.SQLServerDriver
+TARTEL/url=jdbc:sqlserver://10.5.5.225:1433;databasename=TARTEL;integratedsecurity=true
 TARTEL/user=sa
 TARTEL/password=Encrypted 2be98afc86aa7f2e49809b97f8cc7ff99
 
-TELCMS/name=TELCMS
-TELCMS/type=MSSQLNATIVE
-TELCMS/server=10.2.0.203
-TELCMS/database=TELCMS
-TELCMS/port=1433
+TELCMS/type=javax.sql.DataSource
+TELCMS/driver=com.microsoft.sqlserver.jdbc.SQLServerDriver
+TELCMS/url=jdbc:sqlserver://10.2.0.203:1433;databasename=TELCMS;integratedsecurity=true
 TELCMS/user=sa
 TELCMS/password=Encrypted 2be98afc86aa7f2e49809b97f8cc7ff99
 
-TESTE_informix/name=TESTE_informix
-TESTE_informix/type=INFORMIX
-TESTE_informix/server=10.22.50.18
-TESTE_informix/database=cms
-TESTE_informix/port=50000
+TESTE_informix/type=javax.sql.DataSource
+TESTE_informix/driver=com.informix.jdbc.IfxDriver
+TESTE_informix/url=jdbc:bea:informix://10.22.50.18:50000/cms
 TESTE_informix/user=root2
 TESTE_informix/password=Encrypted 2be98afc86aa7f2e4cb79ba75d382a08b
 
-TMR_Producao/name=TMR_Producao
-TMR_Producao/type=MSSQL
-TMR_Producao/server=None
-TMR_Producao/database=TMR_PRODUCAO
-TMR_Producao/port=1521
+TMR_Producao/type=javax.sql.DataSource
+TMR_Producao/driver=com.microsoft.sqlserver.jdbc.SQLServerDriver
+TMR_Producao/url=jdbc:sqlserver://:1521;databasename=TMR_PRODUCAO;integratedsecurity=true
 TMR_Producao/user=vale
 TMR_Producao/password=Encrypted 2be98afc86aa7f2e4cb0faf7cdb82bdde
 
-URA/name=URA
-URA/type=MSSQL
-URA/server=10.22.50.240
-URA/database=WEBREPORTDB
-URA/port=1433
+URA/type=javax.sql.DataSource
+URA/driver=com.microsoft.sqlserver.jdbc.SQLServerDriver
+URA/url=jdbc:sqlserver://10.22.50.240:1433;databasename=WEBREPORTDB;integratedsecurity=true
 URA/user=user_bi
 URA/password=Encrypted 2be98afc86aa78790ae1cbc68cd99acd3
 
-USSTELECOM02_MASTER/name=USSTELECOM02_MASTER
-USSTELECOM02_MASTER/type=MSSQLNATIVE
-USSTELECOM02_MASTER/server=10.2.0.203
-USSTELECOM02_MASTER/database=master
-USSTELECOM02_MASTER/port=1433
+USSTELECOM02_MASTER/type=javax.sql.DataSource
+USSTELECOM02_MASTER/driver=com.microsoft.sqlserver.jdbc.SQLServerDriver
+USSTELECOM02_MASTER/url=jdbc:sqlserver://10.2.0.203:1433;databasename=master;integratedsecurity=true
 USSTELECOM02_MASTER/user=sa
 USSTELECOM02_MASTER/password=Encrypted 2be98afc86aa7f2e49809b97f8cc7ff99
 
-VectorWise/name=VectorWise
-VectorWise/type=INGRES
-VectorWise/server=localhost
-VectorWise/database=test
-VectorWise/port=VW7
+VectorWise/type=javax.sql.DataSource
+VectorWise/driver=com.ingres.jdbc.IngresDriver
+VectorWise/url=jdbc:ingres://localhost:VW7/test
 VectorWise/user=ingres
 VectorWise/password=Encrypted 2be98afc86aa7f2e4cb79ce10df90acde
 
-WEBREPORTDB/name=WEBREPORTDB
-WEBREPORTDB/type=MSSQL
-WEBREPORTDB/server=10.22.50.240
-WEBREPORTDB/database=WEBREPORTDB
-WEBREPORTDB/port=1433
+WEBREPORTDB/type=javax.sql.DataSource
+WEBREPORTDB/driver=com.microsoft.sqlserver.jdbc.SQLServerDriver
+WEBREPORTDB/url=jdbc:sqlserver://10.22.50.240:1433;databasename=WEBREPORTDB;integratedsecurity=true
 WEBREPORTDB/user=user_bi
 WEBREPORTDB/password=Encrypted 2be98afc86aa78790ae1cbc68cd99acd3
 
-WFM/name=WFM
-WFM/type=MSSQL
-WFM/server=10.22.50.66
-WFM/database=BPMAINDB
-WFM/port=1433
+WFM/type=javax.sql.DataSource
+WFM/driver=com.microsoft.sqlserver.jdbc.SQLServerDriver
+WFM/url=jdbc:sqlserver://10.22.50.66:1433;databasename=BPMAINDB;integratedsecurity=true
 WFM/user=reports
 WFM/password=Encrypted 2be98afc86aa7f2b0ae14be7f8cc2fe8e
 
-gridSaude/name=gridSaude
-gridSaude/type=ORACLE
-gridSaude/server=10.79.10.50
-gridSaude/database=griddb2
-gridSaude/port=14260
+gridSaude/type=javax.sql.DataSource
+gridSaude/driver=oracle.jdbc.OracleDriver
+gridSaude/url=jdbc:oracle:thin:@10.79.10.50:14260:griddb2
 gridSaude/user=bikettle
 gridSaude/password=Encrypted 2be98afc86aa7f2e4bc16f623cd99a2c0
 
-griddev/name=griddev
-griddev/type=ORACLE
-griddev/server=10.2.0.103
-griddev/database=griddb
-griddev/port=1521
+griddev/type=javax.sql.DataSource
+griddev/driver=oracle.jdbc.OracleDriver
+griddev/url=jdbc:oracle:thin:@10.2.0.103:1521:griddb
 griddev/user=vale
 griddev/password=Encrypted 2be98afc86aa7f2e4bd18a275e196aacc
 
-gridhml/name=gridhml
-gridhml/type=ORACLE
-gridhml/server=10.2.0.100
-gridhml/database=griddb
-gridhml/port=1521
+gridhml/type=javax.sql.DataSource
+gridhml/driver=oracle.jdbc.OracleDriver
+gridhml/url=jdbc:oracle:thin:@10.2.0.100:1521:griddb
 gridhml/user=vale
 gridhml/password=Encrypted 2be98afc86aa7f2e4bd18a275e19aa2d6
 
-hmlDados/name=hmlDados
-hmlDados/type=POSTGRESQL
-hmlDados/server=localhost
-hmlDados/database=Data
-hmlDados/port=5432
+hmlDados/type=javax.sql.DataSource
+hmlDados/driver=org.postgresql.Driver
+hmlDados/url=jdbc:postgresql://localhost:5432/hibernate?searchpath=Data
 hmlDados/user=postgres
 hmlDados/password=Encrypted 2be98afc86aa7f2e49809b97f8cc7ff99
 
-juvodev_sgr/name=juvodev_sgr
-juvodev_sgr/type=ORACLE
-juvodev_sgr/server=None
-juvodev_sgr/database=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=exa01-scan.br1.ocm.s7060035.oraclecloudatcustomer.com)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=juvodev.br1.ocm.s7060035.oraclecloudatcustomer.com)))
-juvodev_sgr/port=-1
+juvodev_sgr/type=javax.sql.DataSource
+juvodev_sgr/driver=oracle.jdbc.OracleDriver
+juvodev_sgr/url=jdbc:oracle:thin:@:-1:(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=exa01-scan.br1.ocm.s7060035.oraclecloudatcustomer.com)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=juvodev.br1.ocm.s7060035.oraclecloudatcustomer.com)))
 juvodev_sgr/user=SGR
 juvodev_sgr/password=Encrypted 2be98afc86aa7f2e4cb799d57ecb68aec
 
-site_afinidades/name=site_afinidades
-site_afinidades/type=MSSQL
-site_afinidades/server=10.2.0.170
-site_afinidades/database=site_afinidades
-site_afinidades/port=1433
+site_afinidades/type=javax.sql.DataSource
+site_afinidades/driver=com.microsoft.sqlserver.jdbc.SQLServerDriver
+site_afinidades/url=jdbc:sqlserver://10.2.0.170:1433;databasename=site_afinidades;integratedsecurity=true
 site_afinidades/user=processamento
 site_afinidades/password=Encrypted 2be98afc86aa7f2e4cb18ac7e8bc1f682
 
-teste juvo oci/name=teste juvo oci
-teste juvo oci/type=ORACLE
-teste juvo oci/server=10.85.10.50
-teste juvo oci/database=PROD
-teste juvo oci/port=1521
+teste juvo oci/type=javax.sql.DataSource
+teste juvo oci/driver=oracle.jdbc.OracleDriver
+teste juvo oci/url=jdbc:oracle:thin:@10.85.10.50:1521:PROD
 teste juvo oci/user=user_bi
 teste juvo oci/password=Encrypted 2be98fabb0fd5ad86a21ba74fcb81aac8
 
-webautprd/name=webautprd
-webautprd/type=ORACLE
-webautprd/server=10.79.10.60
-webautprd/database=griddb3
-webautprd/port=14260
+webautprd/type=javax.sql.DataSource
+webautprd/driver=oracle.jdbc.OracleDriver
+webautprd/url=jdbc:oracle:thin:@10.79.10.60:14260:griddb3
 webautprd/user=webautprd
 webautprd/password=Encrypted 2be98afc81ad596bbbc1cac71cb86a0c8
 
